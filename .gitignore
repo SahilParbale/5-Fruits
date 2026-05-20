@@ -1,0 +1,60 @@
+# Flutter-specific
+.dart_tool/
+.flutter-plugins/
+.flutter-plugins-dependencies
+.packages
+build/
+
+# Android
+android/.gradle
+android/local.properties
+android/app/jniLibs/
+
+# iOS
+ios/Flutter/.symlinks
+ios/Pods/
+ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/
+ios/Runner.xcworkspace/xcshareddata/
+ios/Podfile.lock
+
+# macOS
+macos/Pods/
+macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/
+macos/Runner.xcworkspace/xcshareddata/
+macos/Podfile.lock
+
+# Linux
+linux/flutter/ephemeral/
+linux/packaging/
+
+# Windows
+windows/flutter/ephemeral/
+
+# Web
+web/.dart_tool/
+
+# VS Code
+.vscode/
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Backup files
+*~
+*.bak
+*.swp
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSBStoreDB
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Replicated interface design folder
+Replicateappinterfacedesign/
