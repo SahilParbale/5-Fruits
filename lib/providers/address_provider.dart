@@ -85,4 +85,34 @@ class AddressProvider with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void setDetectedGPSAddress(String addressText, double lat, double lng) {
+    final index = _addresses.indexWhere((address) => address.id == 'gps_detected');
+    final gpsAddress = Address(
+      id: 'gps_detected',
+      label: 'Detected Location',
+      name: 'Sahil Sharma',
+      address: addressText,
+      phone: '+91 98765 43210',
+      isDefault: true,
+      icon: Icons.my_location_rounded,
+      iconColor: Colors.white,
+      iconBgColor: const Color(0xFF1ABC9C),
+      latitude: lat,
+      longitude: lng,
+    );
+
+    if (index != -1) {
+      _addresses[index] = gpsAddress;
+    } else {
+      _addresses.insert(0, gpsAddress);
+    }
+
+    for (var i = 0; i < _addresses.length; i++) {
+      if (_addresses[i].id != 'gps_detected') {
+        _addresses[i] = _addresses[i].copyWith(isDefault: false);
+      }
+    }
+    notifyListeners();
+  }
 }

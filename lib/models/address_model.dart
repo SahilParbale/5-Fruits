@@ -10,6 +10,8 @@ class Address {
   final IconData icon;
   final Color iconColor;
   final Color iconBgColor;
+  final double? latitude;
+  final double? longitude;
 
   Address({
     required this.id,
@@ -21,6 +23,8 @@ class Address {
     required this.icon,
     required this.iconColor,
     required this.iconBgColor,
+    this.latitude,
+    this.longitude,
   });
 
   Address copyWith({
@@ -33,6 +37,8 @@ class Address {
     IconData? icon,
     Color? iconColor,
     Color? iconBgColor,
+    double? latitude,
+    double? longitude,
   }) {
     return Address(
       id: id ?? this.id,
@@ -44,6 +50,8 @@ class Address {
       icon: icon ?? this.icon,
       iconColor: iconColor ?? this.iconColor,
       iconBgColor: iconBgColor ?? this.iconBgColor,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
     );
   }
 }

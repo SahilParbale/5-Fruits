@@ -5,6 +5,10 @@ import '../providers/address_provider.dart';
 import '../theme/app_theme.dart';
 import '../screens/add_new_address_screen.dart';
 import 'dart:math' as math;
+import 'dart:html' as html;
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import '../providers/auth_provider.dart';
 
 class AddressBottomSheet extends StatelessWidget {
   const AddressBottomSheet({super.key});
@@ -111,10 +115,13 @@ class AddressBottomSheet extends StatelessWidget {
                       children: [
                         _buildActionTile(
                           icon: Icons.my_location,
-                          iconColor: const Color(0xFF2E4035), // Dark green theme color
+                          iconColor: AppColors.primaryGreen,
                           title: 'Use current location',
-                          titleColor: const Color(0xFF2E4035),
+                          titleColor: AppColors.primaryGreen,
                           subtitle: 'Tap to fetch auto location',
+                          onTap: () {
+                            _fetchAndSetGPSLocation(context);
+                          },
                         ),
                         const Divider(height: 1),
                         _buildActionTile(
@@ -325,5 +332,60 @@ class AddressBottomSheet extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _fetchAndSetGPSLocation(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Fetching current GPS location...'),
+        duration: Duration(seconds: 2),
+        backgroundColor: Colors.black87,
+      ),
+    );
+
+    try {
+      html.window.navigator.geolocation.getCurrentPosition(enableHighAccuracy: true).then((position) {
+        final double lat = position.coords?.latitude?.toDouble() ?? 19.0269;
+        final double lng = position.coords?.longitude?.toDouble() ?? 73.0698;
+        
+        // Close bottom sheet first
+        Navigator.pop(context);
+        
+        _reverseGeocodeAndSetAddress(context, lat, lng);
+      }).catchError((error) {
+        debugPrint('[GPS BottomSheet] Failed to get position: $error');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error getting location: $error')),
+        );
+      });
+    } catch (e) {
+      debugPrint('[GPS BottomSheet] Geolocation error: $e');
+    }
+  }
+
+  Future<void> _reverseGeocodeAndSetAddress(BuildContext context, double lat, double lng) async {
+    try {
+      final response = await http.get(
+        Uri.parse('${AuthProvider.baseUrl}/geocode/reverse?latitude=$lat&longitude=$lng'),
+      ).timeout(const Duration(seconds: 5));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        final resolvedAddress = data['address'] as String;
+        
+        Provider.of<AddressProvider>(context, listen: false)
+            .setDetectedGPSAddress(resolvedAddress, lat, lng);
+            
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Location updated: $resolvedAddress'),
+            backgroundColor: AppColors.primaryGreen,
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('[GPS BottomSheet] Error reverse geocoding: $e');
+    }
   }
 }

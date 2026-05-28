@@ -9,6 +9,7 @@ import '../providers/address_provider.dart';
 import '../data/fruit_data.dart';
 import '../widgets/address_bottom_sheet.dart';
 import 'product_detail_screen.dart';
+import '../providers/catalog_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   final VoidCallback onNavigateToCategories;
@@ -136,6 +137,19 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
+    final catalogProvider = Provider.of<CatalogProvider>(context);
+    final allProducts = catalogProvider.products.isNotEmpty ? catalogProvider.products : FruitData.allFruits;
+
+    final flashSale = allProducts.where((p) => p['category'] == 'Exotic' || p['category'] == 'Combos').toList();
+    final popular = allProducts.where((p) => p['category'] == 'Citrus' || p['category'] == 'Pomes' || p['category'] == 'Ready-to-eat').toList();
+    final newArrival = allProducts.where((p) => p['category'] == 'Seasonal' || p['category'] == 'Melons' || p['category'] == 'Dry').toList();
+
+    // Fallbacks if any list is empty, so the UI is never blank:
+    final displayFlashSale = flashSale.isNotEmpty ? flashSale : allProducts.take((allProducts.length / 3).round()).toList();
+    final displayPopular = popular.isNotEmpty ? popular : allProducts.skip((allProducts.length / 3).round()).take((allProducts.length / 3).round()).toList();
+    final displayNewArrival = newArrival.isNotEmpty ? newArrival : allProducts.skip(2 * (allProducts.length / 3).round()).toList();
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -215,9 +229,9 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
                     _scrollToSelectedTab();
                   },
                   children: [
-                    _buildProductGridPage(_flashSaleProducts),
-                    _buildProductGridPage(_popularProducts),
-                    _buildProductGridPage(_newArrivalProducts),
+                    _buildProductGridPage(displayFlashSale),
+                    _buildProductGridPage(displayPopular),
+                    _buildProductGridPage(displayNewArrival),
                   ],
                 ),
         ),
@@ -904,7 +918,9 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
   }
 
   Widget _buildSearchResults() {
-    final filteredProducts = FruitData.allFruits.where((p) {
+    final catalogProvider = Provider.of<CatalogProvider>(context, listen: false);
+    final allProducts = catalogProvider.products.isNotEmpty ? catalogProvider.products : FruitData.allFruits;
+    final filteredProducts = allProducts.where((p) {
       return p['name'].toString().toLowerCase().contains(_searchQuery.toLowerCase());
     }).toList();
 

@@ -12,6 +12,7 @@ import '../providers/favorites_provider.dart';
 import '../providers/address_provider.dart';
 import 'help_support_screen.dart';
 import 'dart:math' as math;
+import '../providers/auth_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   final VoidCallback? onBack;
@@ -413,6 +414,28 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
                 context,
                 MaterialPageRoute(builder: (context) => const HelpSupportScreen()),
               );
+            },
+          ),
+          _buildMenuItem(
+            icon: Icons.logout_rounded,
+            title: 'Log Out',
+            subtitle: 'Sign out of your account',
+            onTap: () async {
+              await Provider.of<AuthProvider>(context, listen: false).logout();
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: const Text(
+                      'Logged out successfully',
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    backgroundColor: const Color(0xFF1B1B1B),
+                    behavior: SnackBarBehavior.floating,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    margin: const EdgeInsets.all(16),
+                  ),
+                );
+              }
             },
           ),
         ],

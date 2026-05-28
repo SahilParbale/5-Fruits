@@ -18,6 +18,9 @@ import 'providers/address_provider.dart';
 import 'providers/card_provider.dart';
 import 'providers/upi_provider.dart';
 import 'providers/settings_provider.dart';
+import 'providers/auth_provider.dart';
+import 'providers/catalog_provider.dart';
+import 'screens/login_screen.dart';
 
 
 void main() {
@@ -35,6 +38,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => CatalogProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => FavoritesProvider()),
         ChangeNotifierProvider(create: (_) => AddressProvider()),
@@ -56,9 +61,103 @@ class MainApp extends StatelessWidget {
             bodySmall: AppTextStyles.bodySmall,
           ),
         ),
-        home: const MyApp(),
+        home: const AuthWrapper(),
       ),
     );
+  }
+}
+
+class AuthWrapper extends StatefulWidget {
+  const AuthWrapper({super.key});
+
+  @override
+  State<AuthWrapper> createState() => _AuthWrapperState();
+}
+
+class _AuthWrapperState extends State<AuthWrapper> {
+  bool _initialized = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkAuth();
+    });
+  }
+
+  Future<void> _checkAuth() async {
+    final auth = Provider.of<AuthProvider>(context, listen: false);
+    final catalog = Provider.of<CatalogProvider>(context, listen: false);
+    await Future.wait([
+      auth.tryAutoLogin(),
+      catalog.fetchCatalog(),
+    ]);
+    if (mounted) {
+      setState(() {
+        _initialized = true;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_initialized) {
+      return Scaffold(
+        backgroundColor: AppColors.background,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 20,
+                      offset: Offset(0, 10),
+                    )
+                  ],
+                ),
+                child: const Icon(
+                  Icons.shopping_basket_rounded,
+                  size: 64,
+                  color: AppColors.primaryGreen,
+                ),
+              ),
+              const SizedBox(height: 24),
+              Text(
+                '5-FRUITS',
+                style: GoogleFonts.barlowCondensed(
+                  fontSize: 40,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 2,
+                  color: const Color(0xFF1B1B1B),
+                ),
+              ),
+              const SizedBox(height: 24),
+              const SizedBox(
+                width: 30,
+                height: 30,
+                child: CircularProgressIndicator(
+                  color: AppColors.primaryGreen,
+                  strokeWidth: 3,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    final authProvider = Provider.of<AuthProvider>(context);
+    if (authProvider.isAuthenticated) {
+      return const MyApp();
+    } else {
+      return const LoginScreen();
+    }
   }
 }
 
