@@ -395,7 +395,7 @@ class UPIPaymentScreen extends StatelessWidget {
               color: Colors.white.withOpacity(0.2),
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.add, color: Colors.white),
+            child: const Icon(Icons.add, color: const Color(0xFFE65100)),
           ),
           const SizedBox(width: 16),
           Column(
@@ -405,14 +405,14 @@ class UPIPaymentScreen extends StatelessWidget {
               Text(
                 'Add New UPI ID',
                 style: AppTextStyles.titleMedium.copyWith(
-                  color: Colors.white,
+                  color: const Color(0xFFE65100),
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 'Link your UPI account',
                 style: AppTextStyles.bodySmall.copyWith(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.black.withOpacity(0.9),
                 ),
               ),
             ],

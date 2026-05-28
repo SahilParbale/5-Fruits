@@ -105,7 +105,7 @@ class _ResolutionPreferenceScreenState extends State<ResolutionPreferenceScreen>
                 child: Container(
                   constraints: const BoxConstraints(minWidth: double.infinity, minHeight: 50),
                   alignment: Alignment.center,
-                  child: const Text('Review Complaint', style: TextStyle(color: Colors.white, fontSize: 16)),
+                  child: const Text('Review Complaint', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
                 ),
               ),
             ),

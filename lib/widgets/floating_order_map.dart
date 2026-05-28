@@ -188,7 +188,7 @@ class _FloatingOrderMapWidgetState extends State<_FloatingOrderMapWidget> with S
                         children: [
                           Text(
                             'Arriving in',
-                            style: AppTextStyles.bodySmall.copyWith(color: Colors.white70, fontSize: 11),
+                            style: AppTextStyles.bodySmall.copyWith(color: Colors.black87, fontSize: 11),
                           ),
                           const SizedBox(height: 2),
                           Text(
@@ -196,7 +196,7 @@ class _FloatingOrderMapWidgetState extends State<_FloatingOrderMapWidget> with S
                             style: GoogleFonts.barlowCondensed(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: const Color(0xFFE65100),
                             ),
                           ),
                         ],
@@ -216,7 +216,7 @@ class _FloatingOrderMapWidgetState extends State<_FloatingOrderMapWidget> with S
                         color: Colors.white.withOpacity(0.2),
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(Icons.close, size: 14, color: Colors.white),
+                      child: const Icon(Icons.close, size: 14, color: const Color(0xFFE65100)),
                     ),
                   ),
                 ),

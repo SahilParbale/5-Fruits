@@ -30,7 +30,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
       period: 'month',
       benefits: ['Unlimited free delivery', '10% Extra Discount', 'Priority Support'],
       isRecommended: true,
-      color: const Color(0xFFD4AF37),
+      color: const Color(0xFFE65100),
     ),
     SubscriptionPlan(
       id: 'platinum',
@@ -90,26 +90,26 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('GOLD MEMBER', style: AppTextStyles.titleMedium.copyWith(color: Colors.white, letterSpacing: 1.5)),
+                  Text('GOLD MEMBER', style: AppTextStyles.titleMedium.copyWith(color: const Color(0xFFE65100), letterSpacing: 1.5)),
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.2),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.star, color: Color(0xFFD4AF37), size: 24), // Gold Icon
+                    child: const Icon(Icons.star, color: Color(0xFFE65100), size: 24), // Gold Icon
                   ),
                 ],
               ),
               const SizedBox(height: 24),
-              Text('Valid until', style: AppTextStyles.bodySmall.copyWith(color: Colors.white.withOpacity(0.8))),
-              Text('Feb 28, 2026', style: AppTextStyles.headlineMedium.copyWith(color: Colors.white)),
+              Text('Valid until', style: AppTextStyles.bodySmall.copyWith(color: Colors.black.withOpacity(0.8))),
+              Text('Feb 28, 2026', style: AppTextStyles.headlineMedium.copyWith(color: const Color(0xFFE65100))),
               const SizedBox(height: 24),
                Row(
                 children: [
                   const Icon(Icons.check_circle_outline, color: Colors.greenAccent, size: 20),
                   const SizedBox(width: 8),
-                  Text('Auto-renewal active', style: AppTextStyles.bodyMedium.copyWith(color: Colors.white)),
+                  Text('Auto-renewal active', style: AppTextStyles.bodyMedium.copyWith(color: const Color(0xFFE65100))),
                   const Spacer(),
                   Switch(
                     value: true,
@@ -165,7 +165,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               gradient: AppColors.premiumLinearGradient,
               shape: BoxShape.circle,
             ),
-            child: Icon(icon, color: Colors.white, size: 20),
+            child: Icon(icon, color: const Color(0xFFE65100), size: 20),
           ),
           const SizedBox(width: 16),
           Text(text, style: AppTextStyles.bodyMedium.copyWith(fontWeight: FontWeight.bold)),
@@ -315,7 +315,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               ),
               child: Text(
                 'RECOMMENDED',
-                style: AppTextStyles.bodySmall.copyWith(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10),
+                style: AppTextStyles.bodySmall.copyWith(color: const Color(0xFFE65100), fontWeight: FontWeight.bold, fontSize: 10),
               ),
             ),
           ),

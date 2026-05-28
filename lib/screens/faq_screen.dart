@@ -83,13 +83,13 @@ class FAQScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.white),
+        icon: const Icon(Icons.arrow_back, color: const Color(0xFFE65100)),
         onPressed: () => Navigator.pop(context),
       ),
       title: Text(
         'Frequently Asked Questions',
         style: AppTextStyles.titleMedium.copyWith(
-          color: Colors.white,
+          color: const Color(0xFFE65100),
           fontSize: 18,
         ),
       ),

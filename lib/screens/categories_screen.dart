@@ -167,7 +167,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> with AutomaticKeepA
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Icon(Icons.shopping_bag_outlined, size: 22, color: Colors.white),
+                    const Icon(Icons.shopping_bag_outlined, size: 22, color: const Color(0xFFE65100)),
                     const SizedBox(width: 8),
                     Consumer<CartProvider>(
                       builder: (context, cart, child) {
@@ -176,7 +176,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> with AutomaticKeepA
                           child: Text(
                             '${cart.itemCount < 10 ? '0' : ''}${cart.itemCount}',
                             style: GoogleFonts.barlowCondensed(
-                              color: Colors.white,
+                              color: const Color(0xFFE65100),
                               fontWeight: FontWeight.w700,
                               fontSize: 22,
                               height: 1.0, // Tighten line height to remove extra padding

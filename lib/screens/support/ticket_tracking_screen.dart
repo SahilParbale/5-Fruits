@@ -68,8 +68,8 @@ class TicketTrackingScreen extends StatelessWidget {
                 onPressed: () {
                   // Navigate to Chat
                 },
-                 icon: const Icon(Icons.chat_bubble_outline, color: Colors.white),
-                label: const Text('Chat with Support', style: TextStyle(color: Colors.white, fontSize: 16)),
+                 icon: const Icon(Icons.chat_bubble_outline, color: const Color(0xFFE65100)),
+                label: const Text('Chat with Support', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
                   disabledBackgroundColor: Colors.transparent,

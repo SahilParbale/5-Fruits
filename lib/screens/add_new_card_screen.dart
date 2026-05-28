@@ -198,7 +198,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
           Text(
             _cardType.toUpperCase(),
             style: AppTextStyles.titleLarge.copyWith(
-              color: Colors.white,
+              color: const Color(0xFFE65100),
               fontWeight: FontWeight.bold,
               letterSpacing: 1.5,
             ),
@@ -212,7 +212,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
               return Text(
                 text,
                 style: AppTextStyles.headlineMedium.copyWith(
-                  color: Colors.white,
+                  color: const Color(0xFFE65100),
                   letterSpacing: 2,
                 ),
               );
@@ -228,7 +228,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                   Text(
                     'CARD HOLDER',
                     style: AppTextStyles.bodySmall.copyWith(
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.black.withOpacity(0.7),
                       fontSize: 10,
                       letterSpacing: 0.5,
                     ),
@@ -241,7 +241,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                       return Text(
                         text,
                         style: AppTextStyles.bodyLarge.copyWith(
-                          color: Colors.white,
+                          color: const Color(0xFFE65100),
                           fontWeight: FontWeight.w600,
                         ),
                       );
@@ -255,7 +255,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                   Text(
                     'EXPIRES',
                     style: AppTextStyles.bodySmall.copyWith(
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.black.withOpacity(0.7),
                       fontSize: 10,
                       letterSpacing: 0.5,
                     ),
@@ -269,7 +269,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                           return Text(
                             value.text.isEmpty ? 'MM' : value.text,
                             style: AppTextStyles.bodyLarge.copyWith(
-                              color: Colors.white,
+                              color: const Color(0xFFE65100),
                               fontWeight: FontWeight.w600,
                             ),
                           );
@@ -278,7 +278,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                       Text(
                         '/',
                         style: AppTextStyles.bodyLarge.copyWith(
-                          color: Colors.white,
+                          color: const Color(0xFFE65100),
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -288,7 +288,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                           return Text(
                             value.text.isEmpty ? 'YY' : value.text,
                             style: AppTextStyles.bodyLarge.copyWith(
-                              color: Colors.white,
+                              color: const Color(0xFFE65100),
                               fontWeight: FontWeight.w600,
                             ),
                           );
@@ -578,7 +578,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
           child: Text(
             widget.card == null ? 'Save Card' : 'Update Card',
             style: GoogleFonts.barlowCondensed(
-              color: Colors.white,
+              color: const Color(0xFFE65100),
               fontWeight: FontWeight.bold,
               fontSize: 24,
               letterSpacing: 1,

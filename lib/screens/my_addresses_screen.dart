@@ -150,12 +150,12 @@ class MyAddressesScreen extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      const Icon(Icons.check, color: Colors.white, size: 14),
+                      const Icon(Icons.check, color: const Color(0xFFE65100), size: 14),
                       const SizedBox(width: 4),
                       Text(
                         'Default',
                         style: AppTextStyles.bodySmall.copyWith(
-                          color: Colors.white,
+                          color: const Color(0xFFE65100),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -314,7 +314,7 @@ class MyAddressesScreen extends StatelessWidget {
                 color: Colors.white.withOpacity(0.2),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.add, color: Colors.white),
+              child: const Icon(Icons.add, color: const Color(0xFFE65100)),
             ),
             const SizedBox(width: 16),
             Column(
@@ -324,14 +324,14 @@ class MyAddressesScreen extends StatelessWidget {
                 Text(
                   'Add New Address',
                   style: AppTextStyles.titleMedium.copyWith(
-                    color: Colors.white,
+                    color: const Color(0xFFE65100),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   'Add a delivery address',
                   style: AppTextStyles.bodySmall.copyWith(
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.black.withOpacity(0.9),
                   ),
                 ),
               ],
@@ -358,7 +358,7 @@ class MyAddressesScreen extends StatelessWidget {
               gradient: AppColors.premiumLinearGradient,
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.location_on_outlined, color: Colors.white, size: 22),
+            child: const Icon(Icons.location_on_outlined, color: const Color(0xFFE65100), size: 22),
           ),
           const SizedBox(width: 16),
           Expanded(

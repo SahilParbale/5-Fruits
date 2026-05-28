@@ -2,75 +2,86 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
-  static const Color primaryGreen = Color(0xFF23AA49); // Fresh green from image
-  static const Color background = Color(0xFFF6F7F9); // Light gray background
-  static const Color primaryText = Color(0xFF1B1B1B); // Black text
-  static const Color secondaryText = Color(0xFF979899); // Light grey text
-  static const Color mutedText = Color(0xFF979899); // Alias for secondary text or specific muted color
-  static const Color priceText = Color(0xFF1B1B1B);
-  static const Color inactiveTab = Color(0xFF2D2D2D); 
-  static const Color stroke = Color(0xFFF1F1F5);
-  static const Color inputBackground = Color(0xFFF3F5F7);
-  static const Color charcoal = Color(0xFF2D2D2D); // Black gray / Charcoal
+  static const Color primaryGreen = Color(0xFFE65100); // Deep Orange Accent
+  static const Color background = Color(0xFFFFFDF7); // Very Light Cream Background
+  static const Color primaryText = Color(0xFF0D1C2E); // Deep Navy/Charcoal
+  static const Color secondaryText = Color(0xFF8D8D8D); // Light Grey/Brown
+  static const Color mutedText = Color(0xFFB0B0B0); 
+  static const Color priceText = Color(0xFF0D1C2E);
+  static const Color inactiveTab = Color(0xFF8D8D8D); 
+  static const Color stroke = Color(0xFFEAE5D9); // Slightly warmer stroke
+  static const Color inputBackground = Color(0xFFFFF3E0); // Pale Orange
+  static const Color charcoal = Color(0xFF0D1C2E); 
+  static const Color secondaryAccent = Color(0xFFFFE082); // Soft yellow accent
 
   static const LinearGradient premiumLinearGradient = LinearGradient(
-    colors: [Color(0xFF000000), Color(0xFF2C3E50)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
+    colors: [
+      Color(0xFFFFEDB3),
+      Color(0xFFFFD54F),
+    ],
   );
 }
 
 class AppDefaults {
-  static const double smoothRadius = 18.0;
+  static const double smoothRadius = 28.0; // Redesigned rounded card style
   static const List<BoxShadow> softShadow = [
     BoxShadow(
-      color: Color(0x0A000000),
-      blurRadius: 20,
-      offset: Offset(0, 4),
+      blurRadius: 12,
+      spreadRadius: 1,
+      offset: Offset(0, 6),
+      color: Colors.black12,
     ),
   ];
 }
 
 class AppTextStyles {
-  static TextStyle get headlineLarge => GoogleFonts.dmSans(
-    fontSize: 28,
-    fontWeight: FontWeight.bold,
+  // Screen Titles: 34pt, w700
+  static TextStyle get headlineLarge => GoogleFonts.poppins(
+    fontSize: 34,
+    fontWeight: FontWeight.w700,
     color: AppColors.primaryText,
+    letterSpacing: -0.5,
   );
 
-  static TextStyle get headlineMedium => GoogleFonts.dmSans(
+  // Section Headings: 24pt, w600
+  static TextStyle get headlineMedium => GoogleFonts.poppins(
     fontSize: 24,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     color: AppColors.primaryText,
   );
 
-  static TextStyle get titleLarge => GoogleFonts.dmSans(
-    fontSize: 20,
-    fontWeight: FontWeight.bold,
+  static TextStyle get titleLarge => GoogleFonts.poppins(
+    fontSize: 22,
+    fontWeight: FontWeight.w700,
     color: AppColors.primaryText,
   );
 
-  static TextStyle get titleMedium => GoogleFonts.dmSans(
+  // Product Names: 18pt, w600
+  static TextStyle get titleMedium => GoogleFonts.poppins(
     fontSize: 18,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     color: AppColors.primaryText,
   );
 
-  static TextStyle get bodyLarge => GoogleFonts.dmSans(
+  static TextStyle get bodyLarge => GoogleFonts.poppins(
     fontSize: 16,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w500,
     color: AppColors.primaryText,
   );
 
-  static TextStyle get bodyMedium => GoogleFonts.dmSans(
+  static TextStyle get bodyMedium => GoogleFonts.poppins(
     fontSize: 14,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w500,
     color: AppColors.primaryText,
   );
   
-  static TextStyle get bodySmall => GoogleFonts.dmSans(
-    fontSize: 12,
-    fontWeight: FontWeight.w500,
+  // Small Info: 14pt, w400
+  static TextStyle get bodySmall => GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
     color: AppColors.secondaryText,
   );
 }
+

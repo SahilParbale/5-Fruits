@@ -102,7 +102,7 @@ class InvoiceScreen extends StatelessWidget {
                 backgroundColor: AppColors.primaryText,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               ),
-              child: const Text('Update Details', style: TextStyle(color: Colors.white)),
+              child: const Text('Update Details', style: TextStyle(color: const Color(0xFFE65100))),
             ),
           ),
         ],

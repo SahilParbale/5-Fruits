@@ -96,7 +96,7 @@ class AccountBillingScreen extends StatelessWidget {
                     gradient: AppColors.premiumLinearGradient, // Use theme gradient
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(icon, color: Colors.white, size: 24), // White icon
+                  child: Icon(icon, color: const Color(0xFFE65100), size: 24), // White icon
                 ),
                 const SizedBox(width: 16),
                 Expanded(

@@ -56,8 +56,8 @@ class MyTicketsScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const OrderHistoryScreen()),
                   );
                 },
-                icon: const Icon(Icons.add, color: Colors.white),
-                label: const Text('Raise New Ticket', style: TextStyle(color: Colors.white, fontSize: 16)),
+                icon: const Icon(Icons.add, color: const Color(0xFFE65100)),
+                label: const Text('Raise New Ticket', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
                   disabledBackgroundColor: Colors.transparent,

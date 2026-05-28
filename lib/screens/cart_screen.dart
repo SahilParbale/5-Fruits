@@ -296,7 +296,7 @@ class CartScreen extends StatelessWidget {
             child: Text(
               'Apply',
               style: AppTextStyles.bodyMedium.copyWith(
-                color: Colors.white,
+                color: const Color(0xFFE65100),
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -460,7 +460,7 @@ class CartScreen extends StatelessWidget {
           child: Text(
             'Proceed to Checkout',
             style: AppTextStyles.titleMedium.copyWith(
-              color: Colors.white,
+              color: const Color(0xFFE65100),
               fontWeight: FontWeight.bold,
               fontSize: 18,
             ),
@@ -537,7 +537,7 @@ class CartScreen extends StatelessWidget {
           Text(
             'Your order is ₹${remaining.toStringAsFixed(2)} away from free delivery',
             style: AppTextStyles.bodySmall.copyWith(
-              color: const Color(0xFFE65100).withOpacity(0.8),
+              color: Colors.black.withOpacity(0.8),
             ),
           ),
         ],
@@ -855,14 +855,14 @@ class CartScreen extends StatelessWidget {
                   width: 140,
                   height: 140,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF1B1B1B).withOpacity(0.1), // Charcoal tint
+                    color: const Color(0xFFFFE082).withOpacity(0.5), // Pale Gold
                     shape: BoxShape.circle,
                   ),
                 ),
                 const Icon(
                   Icons.shopping_cart_outlined,
                   size: 64,
-                  color: Color(0xFF1B1B1B), // Charcoal Icon
+                  color: Color(0xFFE65100), // Deep Orange
                 ),
                  Positioned(
                   right: 32,
@@ -874,7 +874,7 @@ class CartScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                       boxShadow: [
                          BoxShadow(
-                          color: const Color(0xFF1B1B1B).withOpacity(0.2), // Charcoal shadow
+                          color: Colors.black.withOpacity(0.2), // Orange shadow
                           blurRadius: 5,
                           offset: const Offset(0, 2),
                         ),
@@ -883,7 +883,7 @@ class CartScreen extends StatelessWidget {
                      child: const Icon(
                       Icons.inventory_2_outlined, // Box icon
                       size: 20,
-                      color: Color(0xFF1B1B1B),
+                      color: Color(0xFFE65100),
                     ),
                   ),
                 ),
@@ -940,7 +940,7 @@ class CartScreen extends StatelessWidget {
                         Text(
                           'Start Shopping',
                           style: GoogleFonts.barlowCondensed(
-                            color: Colors.white,
+                            color: const Color(0xFFE65100),
                             fontWeight: FontWeight.bold,
                             fontSize: 22,
                             letterSpacing: 0.5,
@@ -949,7 +949,7 @@ class CartScreen extends StatelessWidget {
                         const SizedBox(width: 12),
                         const Icon(
                           Icons.arrow_forward_rounded,
-                          color: Colors.white,
+                          color: const Color(0xFFE65100),
                           size: 24,
                         ),
                       ],

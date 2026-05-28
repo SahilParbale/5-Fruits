@@ -196,7 +196,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                   style: GoogleFonts.barlowCondensed(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.black.withOpacity(0.9),
                   ),
                 ),
               ),
@@ -484,7 +484,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                 ),
                 child: Text(
                   'Close',
-                  style: AppTextStyles.bodyLarge.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                  style: AppTextStyles.bodyLarge.copyWith(color: const Color(0xFFE65100), fontWeight: FontWeight.bold),
                 ),
               ),
             ),

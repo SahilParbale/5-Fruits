@@ -286,11 +286,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 const Icon(Icons.check, color: Colors.white, size: 12),
+                 const Icon(Icons.check, color: const Color(0xFFE65100), size: 12),
                  const SizedBox(width: 4),
                  Text(
                    'Selected',
-                   style: AppTextStyles.bodySmall.copyWith(color: Colors.white, fontSize: 10),
+                   style: AppTextStyles.bodySmall.copyWith(color: const Color(0xFFE65100), fontSize: 10),
                  ),
                ],
              )
@@ -652,7 +652,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                     child: const Center(
-                                      child: Text('Save UPI ID', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
+                                      child: Text('Save UPI ID', style: TextStyle(color: const Color(0xFFE65100), fontWeight: FontWeight.bold, fontSize: 16)),
                                     ),
                                   ),
                                 ),
@@ -881,7 +881,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                               gradient: AppColors.premiumLinearGradient,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: const Text('Pay', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
+                            child: const Text('Pay', style: TextStyle(color: const Color(0xFFE65100), fontWeight: FontWeight.bold, fontSize: 12)),
                           ),
                         ),
                       ],
@@ -1098,7 +1098,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                     color: const Color(0xFF1B1B1B),
                                     borderRadius: BorderRadius.circular(4),
                                   ),
-                                  child: Text('Default', style: AppTextStyles.bodySmall.copyWith(color: Colors.white, fontSize: 10)),
+                                  child: Text('Default', style: AppTextStyles.bodySmall.copyWith(color: const Color(0xFFE65100), fontSize: 10)),
                                 ),
                               ],
                             ],
@@ -1336,7 +1336,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                            style: TextStyle(
                              fontSize: 18,
                              fontWeight: FontWeight.bold,
-                             color: Colors.white,
+                             color: const Color(0xFFE65100),
                            ),
                          ),
                        ),

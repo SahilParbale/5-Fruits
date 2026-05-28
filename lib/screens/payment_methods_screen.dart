@@ -202,7 +202,7 @@ class PaymentMethodsScreen extends StatelessWidget {
               Text(
                 card.type.toUpperCase(),
                 style: AppTextStyles.titleLarge.copyWith(
-                  color: Colors.white,
+                  color: const Color(0xFFE65100),
                   letterSpacing: 1.2,
                 ),
               ),
@@ -215,12 +215,12 @@ class PaymentMethodsScreen extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      const Icon(Icons.check, color: Colors.white, size: 14),
+                      const Icon(Icons.check, color: const Color(0xFFE65100), size: 14),
                       const SizedBox(width: 4),
                       Text(
                         'Default',
                         style: AppTextStyles.bodySmall.copyWith(
-                          color: Colors.white,
+                          color: const Color(0xFFE65100),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -233,7 +233,7 @@ class PaymentMethodsScreen extends StatelessWidget {
           Text(
             card.number,
             style: AppTextStyles.headlineMedium.copyWith(
-              color: Colors.white,
+              color: const Color(0xFFE65100),
               letterSpacing: 2,
             ),
           ),
@@ -247,7 +247,7 @@ class PaymentMethodsScreen extends StatelessWidget {
                   Text(
                     'CARD HOLDER',
                     style: AppTextStyles.bodySmall.copyWith(
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.black.withOpacity(0.7),
                       fontSize: 10,
                       letterSpacing: 1,
                     ),
@@ -256,7 +256,7 @@ class PaymentMethodsScreen extends StatelessWidget {
                   Text(
                     card.holder,
                     style: AppTextStyles.bodyLarge.copyWith(
-                      color: Colors.white,
+                      color: const Color(0xFFE65100),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -268,7 +268,7 @@ class PaymentMethodsScreen extends StatelessWidget {
                   Text(
                     'EXPIRES',
                     style: AppTextStyles.bodySmall.copyWith(
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.black.withOpacity(0.7),
                       fontSize: 10,
                       letterSpacing: 1,
                     ),
@@ -277,7 +277,7 @@ class PaymentMethodsScreen extends StatelessWidget {
                   Text(
                     '${card.expiryMonth}/${card.expiryYear}',
                     style: AppTextStyles.bodyLarge.copyWith(
-                      color: Colors.white,
+                      color: const Color(0xFFE65100),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -448,7 +448,7 @@ class PaymentMethodsScreen extends StatelessWidget {
                 color: Colors.white.withOpacity(0.2),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.add, color: Colors.white),
+              child: const Icon(Icons.add, color: const Color(0xFFE65100)),
             ),
             const SizedBox(width: 16),
             Column(
@@ -458,14 +458,14 @@ class PaymentMethodsScreen extends StatelessWidget {
                 Text(
                   'Add New Card',
                   style: AppTextStyles.titleMedium.copyWith(
-                    color: Colors.white,
+                    color: const Color(0xFFE65100),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   'Add a payment method',
                   style: AppTextStyles.bodySmall.copyWith(
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.black.withOpacity(0.9),
                   ),
                 ),
               ],

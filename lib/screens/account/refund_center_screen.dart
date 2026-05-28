@@ -117,10 +117,10 @@ class RefundCenterScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Total Refunds', style: AppTextStyles.bodySmall.copyWith(color: Colors.white70)),
+                  Text('Total Refunds', style: AppTextStyles.bodySmall.copyWith(color: Colors.black87)),
                   const SizedBox(height: 8),
-                  Text('₹${totalRefunds.toStringAsFixed(2)}', style: AppTextStyles.headlineLarge.copyWith(color: Colors.white)),
-                  Text('This Month', style: AppTextStyles.bodySmall.copyWith(color: Colors.white70)),
+                  Text('₹${totalRefunds.toStringAsFixed(2)}', style: AppTextStyles.headlineLarge.copyWith(color: const Color(0xFFE65100))),
+                  Text('This Month', style: AppTextStyles.bodySmall.copyWith(color: Colors.black87)),
                 ],
               ),
                Container(
@@ -129,7 +129,7 @@ class RefundCenterScreen extends StatelessWidget {
                   color: Colors.white.withOpacity(0.15),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.restart_alt_rounded, color: Colors.white, size: 32),
+                child: const Icon(Icons.restart_alt_rounded, color: const Color(0xFFE65100), size: 32),
               ),
             ],
           ),
@@ -154,7 +154,7 @@ class RefundCenterScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(value, style: AppTextStyles.titleLarge.copyWith(color: color)),
-        Text(label, style: AppTextStyles.bodySmall.copyWith(color: Colors.white70)),
+        Text(label, style: AppTextStyles.bodySmall.copyWith(color: Colors.black87)),
       ],
     );
   }
@@ -207,7 +207,7 @@ class RefundCenterScreen extends StatelessWidget {
                   ),
                   child: const Icon(
                     Icons.restart_alt_rounded,
-                    color: Colors.white,
+                    color: const Color(0xFFE65100),
                     size: 24,
                   ),
                 ),

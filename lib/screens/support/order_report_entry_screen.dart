@@ -222,7 +222,7 @@ class _OrderReportEntryScreenState extends State<OrderReportEntryScreen> {
                     shape: BoxShape.circle,
                     border: isSelected ? Border.all(color: const Color(0xFF2C3E50), width: 2) : null,
                   ),
-                  child: Icon(issue.icon, color: Colors.white, size: 20), // Smaller icon
+                  child: Icon(issue.icon, color: const Color(0xFFE65100), size: 20), // Smaller icon
                 ),
                 const SizedBox(height: 8),
                 Text(
@@ -292,7 +292,7 @@ class _OrderReportEntryScreenState extends State<OrderReportEntryScreen> {
               minimumSize: const Size(double.infinity, 50),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             ),
-            child: const Text('Next: Provide Details', style: TextStyle(color: Colors.white, fontSize: 16)),
+            child: const Text('Next: Provide Details', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
           ),
         ),
       ),

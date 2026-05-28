@@ -189,7 +189,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       child: Text(
                         'Update Password',
                         style: AppTextStyles.bodyLarge.copyWith(
-                          color: Colors.white,
+                          color: const Color(0xFFE65100),
                           fontWeight: FontWeight.bold,
                         ),
                       ),

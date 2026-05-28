@@ -249,7 +249,7 @@ class OrderHistoryScreen extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: Colors.black, width: 1),
+        border: Border.all(color: const Color(0xFFE65100), width: 1),
         borderRadius: BorderRadius.circular(AppDefaults.smoothRadius),
         boxShadow: [
           BoxShadow(
@@ -266,10 +266,10 @@ class OrderHistoryScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: const BoxDecoration(
-                  color: Colors.black,
+                  color: const Color(0xFFE65100),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.shopping_bag_outlined, color: Colors.white, size: 24),
+                child: const Icon(Icons.shopping_bag_outlined, color: const Color(0xFFE65100), size: 24),
               ),
               const SizedBox(width: 16),
               Column(
@@ -357,7 +357,7 @@ class OrderHistoryScreen extends StatelessWidget {
                     color: const Color(0xFF1B1B1B),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Icon(Icons.inventory_2_outlined, color: Colors.white, size: 22),
+                  child: const Icon(Icons.inventory_2_outlined, color: const Color(0xFFE65100), size: 22),
                 ),
                 const SizedBox(width: 12),
                 Column(
@@ -464,7 +464,7 @@ class OrderHistoryScreen extends StatelessWidget {
                         child: Text(
                           'Reorder',
                           style: AppTextStyles.bodyMedium.copyWith(
-                            color: Colors.white,
+                            color: const Color(0xFFE65100),
                             fontWeight: FontWeight.bold,
                             fontSize: 13,
                           ),
@@ -737,7 +737,7 @@ class OrderHistoryScreen extends StatelessWidget {
                         child: Center(
                           child: Text(
                             order.status == 'Delivered' ? 'Report an Issue' : 'Need Help?',
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: const Color(0xFFE65100), fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),

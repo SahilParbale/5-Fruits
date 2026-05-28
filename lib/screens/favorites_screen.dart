@@ -1,9 +1,11 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../providers/favorites_provider.dart';
 import '../providers/cart_provider.dart';
+import 'product_detail_screen.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
@@ -13,9 +15,16 @@ class FavoritesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Favorites', style: AppTextStyles.titleLarge),
+        title: Text(
+          'Your Favorites', 
+          style: AppTextStyles.headlineMedium.copyWith(
+            fontSize: 22,
+            fontWeight: FontWeight.w700,
+            color: AppColors.primaryText,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.background,
         elevation: 0,
         automaticallyImplyLeading: false,
       ),
@@ -31,7 +40,7 @@ class FavoritesScreen extends StatelessWidget {
                 }
 
                 return GridView.builder(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  padding: const EdgeInsets.only(left: 12, right: 12, top: 8, bottom: 120),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 16,
@@ -51,140 +60,174 @@ class FavoritesScreen extends StatelessWidget {
     );
   }
 
-
-
-
   Widget _buildProductCard(BuildContext context, Map<String, dynamic> product) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(AppDefaults.smoothRadius),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
+    final price = (product['price'] as num).toDouble();
+    final name = product['name'] as String;
+    final size = product['size'] as String;
+    final image = product['image'] as String;
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetailScreen(product: product),
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: AppColors.background,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: (product['image'] as String).startsWith('http') 
-                      ? Image.network(
-                          product['image'] as String,
-                          fit: BoxFit.contain,
-                          errorBuilder: (context, error, stackTrace) => const Center(child: Icon(Icons.error)),
-                        )
-                      : Image.asset(
-                          product['image'] as String,
-                          fit: BoxFit.contain,
-                          errorBuilder: (context, error, stackTrace) => const Center(child: Icon(Icons.error)),
-                        ),
-                  ),
-                ),
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: GestureDetector(
-                    onTap: () {
-                      Provider.of<FavoritesProvider>(context, listen: false).toggleFavorite(product);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                           BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 4,
-                            offset: Offset(0, 2),
-                          )
-                        ]
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(28),
+          boxShadow: const [
+            BoxShadow(
+              blurRadius: 12,
+              spreadRadius: 1,
+              offset: Offset(0, 6),
+              color: Colors.black12,
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Top Section (Image and Glassmorphic Favorite)
+            Expanded(
+              child: Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFFFFF), // Pastel warm background
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(24),
+                      child: Hero(
+                        tag: 'product_image_$name',
+                        child: image.startsWith('http')
+                            ? Image.network(image, fit: BoxFit.cover, width: double.infinity, height: double.infinity)
+                            : Image.asset(image, fit: BoxFit.cover, width: double.infinity, height: double.infinity, errorBuilder: (context, error, stackTrace) {
+                                return const Center(child: Icon(Icons.image_not_supported_outlined, color: AppColors.mutedText));
+                              }),
                       ),
-                      child: const Icon(Icons.favorite, color: Color(0xFFFF7B6A), size: 16),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            product['name'] as String,
-            style: AppTextStyles.bodyMedium.copyWith(
-              color: const Color(0xFF3B3B3B),
-              fontWeight: FontWeight.bold
-            ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            product['size'] as String,
-            style: AppTextStyles.bodySmall,
-          ),
-          const SizedBox(height: 12),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '₹${(product['price'] as num).toStringAsFixed(2)}',
-                 style: GoogleFonts.barlowCondensed(
-                   fontWeight: FontWeight.w700,
-                   color: const Color(0xFF3B3B3B),
-                   fontSize: 22,
-                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                   Provider.of<CartProvider>(context, listen: false).addItem(
-                      product['name'],
-                      product['name'],
-                      (product['price'] as num).toDouble(),
-                      product['image'],
-                      product['size'],
-                    );
-                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          'Added ${product['name']} to cart',
-                          style: const TextStyle(color: Colors.white),
+                  
+                  // Glassmorphic Favorite Button (Always show as active red heart)
+                  Positioned(
+                    top: 14,
+                    right: 14,
+                    child: GestureDetector(
+                      onTap: () {
+                        Provider.of<FavoritesProvider>(context, listen: false).toggleFavorite(product);
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                          child: Container(
+                            padding: const EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.55),
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Colors.white.withOpacity(0.3), width: 1),
+                            ),
+                            child: const Icon(
+                              Icons.favorite,
+                              color: Color(0xFFFF7B6A),
+                              size: 18,
+                            ),
+                          ),
                         ),
-                        duration: const Duration(seconds: 2),
-                        backgroundColor: AppColors.primaryGreen,
                       ),
-                    );
-                },
-                child: Container(
-                  width: 32,
-                  height: 32,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF3B3B3B),
-                    shape: BoxShape.circle,
+                    ),
                   ),
-                  child: const Center(
-                    child: Icon(Icons.add, color: Colors.white, size: 18),
-                  ),
-                ),
+                ],
               ),
-            ],
-          ),
-        ],
+            ),
+            
+            // Bottom Section (Metadata and CTA)
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: AppTextStyles.bodyLarge.copyWith(
+                      color: AppColors.primaryText,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    size,
+                    style: AppTextStyles.bodySmall.copyWith(fontSize: 12),
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '₹${price.toStringAsFixed(2)}',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.primaryText,
+                          fontSize: 18,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Provider.of<CartProvider>(context, listen: false).addItem(
+                            name,
+                            name,
+                            price,
+                            image,
+                            size,
+                          );
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Added $name to cart',
+                                style: GoogleFonts.poppins(color: const Color(0xFFE65100), fontWeight: FontWeight.bold),
+                              ),
+                              duration: const Duration(seconds: 2),
+                              backgroundColor: const Color(0xFFE65100),
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                              margin: const EdgeInsets.all(16),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            gradient: AppColors.premiumLinearGradient,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                blurRadius: 8,
+                                offset: const Offset(0, 4),
+                              )
+                            ],
+                          ),
+                          child: const Icon(Icons.add, color: const Color(0xFFE65100), size: 20),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -197,22 +240,22 @@ class FavoritesScreen extends StatelessWidget {
           Container(
             width: 120,
             height: 120,
-            decoration: const BoxDecoration(
-              color: Color(0xFFFFEBEE),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.08),
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.favorite_outline, color: Color(0xFFFF7B6A), size: 64),
+            child: const Icon(Icons.favorite_outline, color: Color(0xFFE65100), size: 64),
           ),
           const SizedBox(height: 24),
           Text(
-            'No favorites yet',
-            style: AppTextStyles.titleLarge,
+            'Your boutique wishlist is empty',
+            style: AppTextStyles.titleLarge.copyWith(fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: 12),
           Text(
-            'Explore our products and mark your favorites\nto see them here.',
+            'Explore our collections and save your favorite organic\nproduce to view them here.',
             textAlign: TextAlign.center,
-            style: AppTextStyles.bodyMedium.copyWith(color: AppColors.secondaryText),
+            style: AppTextStyles.bodySmall,
           ),
           const SizedBox(height: 32),
         ],

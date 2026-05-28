@@ -319,7 +319,7 @@ class _AddNewUPIScreenState extends State<AddNewUPIScreen> {
               gradient: AppColors.premiumLinearGradient,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(Icons.alternate_email, color: Colors.white, size: 20),
+            child: const Icon(Icons.alternate_email, color: const Color(0xFFE65100), size: 20),
           ),
           suffixIcon: _isVerified 
               ? const Icon(Icons.check_circle, color: AppColors.primaryGreen) 
@@ -345,7 +345,7 @@ class _AddNewUPIScreenState extends State<AddNewUPIScreen> {
               gradient: AppColors.premiumLinearGradient,
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.star_rounded, color: Colors.white, size: 22),
+            child: const Icon(Icons.star_rounded, color: const Color(0xFFE65100), size: 22),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -396,7 +396,7 @@ class _AddNewUPIScreenState extends State<AddNewUPIScreen> {
               gradient: AppColors.premiumLinearGradient,
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.info_outline, color: Colors.white, size: 16),
+            child: const Icon(Icons.info_outline, color: const Color(0xFFE65100), size: 16),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -479,7 +479,7 @@ class _AddNewUPIScreenState extends State<AddNewUPIScreen> {
           child: Text(
             widget.upiToEdit != null ? 'Update UPI ID' : 'Save UPI ID',
             style: GoogleFonts.barlowCondensed(
-              color: Colors.white,
+              color: const Color(0xFFE65100),
               fontWeight: FontWeight.bold,
               fontSize: 24,
               letterSpacing: 1,

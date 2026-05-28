@@ -145,7 +145,7 @@ class _OrderConfirmationMapScreenState extends State<OrderConfirmationMapScreen>
                         shaderCallback: (bounds) => AppColors.premiumLinearGradient.createShader(
                           Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                         ),
-                        child: const Icon(Icons.support_agent, size: 18, color: Colors.white),
+                        child: const Icon(Icons.support_agent, size: 18, color: const Color(0xFFE65100)),
                       ),
                       const SizedBox(width: 8),
                       Text('Help', style: AppTextStyles.bodyMedium.copyWith(fontWeight: FontWeight.bold)),
@@ -218,7 +218,7 @@ class _OrderConfirmationMapScreenState extends State<OrderConfirmationMapScreen>
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 8)],
                     ),
-                    child: Text('4.2 km', style: AppTextStyles.bodySmall.copyWith(fontWeight: FontWeight.bold, color: Colors.white)),
+                    child: Text('4.2 km', style: AppTextStyles.bodySmall.copyWith(fontWeight: FontWeight.bold, color: const Color(0xFFE65100))),
                   ),
                   const SizedBox(height: 4),
                   Container(
@@ -232,7 +232,7 @@ class _OrderConfirmationMapScreenState extends State<OrderConfirmationMapScreen>
                        shaderCallback: (bounds) => AppColors.premiumLinearGradient.createShader(
                          Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                        ),
-                       child: const Icon(Icons.home, color: Colors.white, size: 24),
+                       child: const Icon(Icons.home, color: const Color(0xFFE65100), size: 24),
                      ),
                   ),
                 ],
@@ -302,7 +302,7 @@ class _OrderConfirmationMapScreenState extends State<OrderConfirmationMapScreen>
                               style: GoogleFonts.barlowCondensed(
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white, // The color must be white for ShaderMask to apply gradient correctly
+                                color: const Color(0xFFE65100), // The color must be white for ShaderMask to apply gradient correctly
                               ),
                             ),
                           ),
@@ -318,7 +318,7 @@ class _OrderConfirmationMapScreenState extends State<OrderConfirmationMapScreen>
                             shaderCallback: (bounds) => AppColors.premiumLinearGradient.createShader(
                               Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                             ),
-                            child: const Icon(Icons.timer_outlined, color: Colors.white, size: 28),
+                            child: const Icon(Icons.timer_outlined, color: const Color(0xFFE65100), size: 28),
                         ),
                       ),
                     ],
@@ -341,7 +341,7 @@ class _OrderConfirmationMapScreenState extends State<OrderConfirmationMapScreen>
                           shaderCallback: (bounds) => AppColors.premiumLinearGradient.createShader(
                             Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                           ),
-                          child: Text('Order Details', style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold, color: Colors.white)),
+                          child: Text('Order Details', style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold, color: const Color(0xFFE65100))),
                       ),
                       const SizedBox(height: 16),
                       _buildInfoRow(Icons.receipt_long, 'Order ID', '#ORD-12893'),
@@ -363,7 +363,7 @@ class _OrderConfirmationMapScreenState extends State<OrderConfirmationMapScreen>
                           shaderCallback: (bounds) => AppColors.premiumLinearGradient.createShader(
                             Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                           ),
-                          child: Text('Payment details', style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold, color: Colors.white)),
+                          child: Text('Payment details', style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold, color: const Color(0xFFE65100))),
                       ),
                       const SizedBox(height: 16),
                       Container(
@@ -386,7 +386,7 @@ class _OrderConfirmationMapScreenState extends State<OrderConfirmationMapScreen>
                                     shaderCallback: (bounds) => AppColors.premiumLinearGradient.createShader(
                                       Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                                     ),
-                                    child: const Icon(Icons.check_circle, color: Colors.white),
+                                    child: const Icon(Icons.check_circle, color: const Color(0xFFE65100)),
                                   ),
                             ),
                             const SizedBox(width: 16),

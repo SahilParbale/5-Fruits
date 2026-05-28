@@ -285,7 +285,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                   gradient: AppColors.premiumLinearGradient,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Icon(icon, color: Colors.white, size: 20),
+                child: Icon(icon, color: const Color(0xFFE65100), size: 20),
               ),
             ),
           ),
@@ -311,7 +311,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
               gradient: AppColors.premiumLinearGradient,
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.star_rounded, color: Colors.white, size: 22),
+            child: const Icon(Icons.star_rounded, color: const Color(0xFFE65100), size: 22),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -395,7 +395,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
           child: Text(
             isEdit ? 'Update Address' : 'Save Address',
             style: GoogleFonts.barlowCondensed(
-              color: Colors.white,
+              color: const Color(0xFFE65100),
               fontWeight: FontWeight.bold,
               fontSize: 24,
               letterSpacing: 1,

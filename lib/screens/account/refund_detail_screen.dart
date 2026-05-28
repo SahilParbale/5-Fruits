@@ -90,7 +90,7 @@ class RefundDetailScreen extends StatelessWidget {
             style: GoogleFonts.barlowCondensed(
               fontSize: 48,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: const Color(0xFFE65100),
               letterSpacing: 0.5,
             ),
           ),
@@ -98,7 +98,7 @@ class RefundDetailScreen extends StatelessWidget {
           Text(
             'Refund Amount',
             style: AppTextStyles.bodySmall.copyWith(
-              color: Colors.white.withOpacity(0.6),
+              color: Colors.black.withOpacity(0.6),
               fontSize: 13,
             ),
           ),
@@ -172,12 +172,12 @@ class RefundDetailScreen extends StatelessWidget {
             ),
             child: Row(
               children: [
-                const Icon(Icons.receipt_long_outlined, color: Colors.white, size: 18),
+                const Icon(Icons.receipt_long_outlined, color: const Color(0xFFE65100), size: 18),
                 const SizedBox(width: 10),
                 Text(
                   'Refund Information',
                   style: AppTextStyles.bodyLarge.copyWith(
-                    color: Colors.white,
+                    color: const Color(0xFFE65100),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -265,12 +265,12 @@ class RefundDetailScreen extends StatelessWidget {
             ),
             child: Row(
               children: [
-                const Icon(Icons.timeline_rounded, color: Colors.white, size: 18),
+                const Icon(Icons.timeline_rounded, color: const Color(0xFFE65100), size: 18),
                 const SizedBox(width: 10),
                 Text(
                   'Refund Timeline',
                   style: AppTextStyles.bodyLarge.copyWith(
-                    color: Colors.white,
+                    color: const Color(0xFFE65100),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -421,12 +421,12 @@ class RefundDetailScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.headset_mic_rounded, color: Colors.white, size: 20),
+              const Icon(Icons.headset_mic_rounded, color: const Color(0xFFE65100), size: 20),
               const SizedBox(width: 10),
               Text(
                 'Contact Support',
                 style: AppTextStyles.bodyLarge.copyWith(
-                  color: Colors.white,
+                  color: const Color(0xFFE65100),
                   fontWeight: FontWeight.bold,
                 ),
               ),

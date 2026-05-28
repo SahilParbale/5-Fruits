@@ -142,7 +142,7 @@ class HelpSupportScreen extends StatelessWidget {
                 color: Colors.white.withOpacity(0.2),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.chat_bubble_outline, color: Colors.white, size: 24),
+              child: const Icon(Icons.chat_bubble_outline, color: const Color(0xFFE65100), size: 24),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -152,7 +152,7 @@ class HelpSupportScreen extends StatelessWidget {
                   Text(
                     'Live Chat',
                     style: AppTextStyles.titleMedium.copyWith(
-                      color: Colors.white,
+                      color: const Color(0xFFE65100),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -160,7 +160,7 @@ class HelpSupportScreen extends StatelessWidget {
                   Text(
                     'Average response time: 2 mins',
                     style: AppTextStyles.bodySmall.copyWith(
-                      color: Colors.white.withOpacity(0.9),
+                      color: Colors.black.withOpacity(0.9),
                       fontSize: 12,
                     ),
                   ),
@@ -355,7 +355,7 @@ class HelpSupportScreen extends StatelessWidget {
               gradient: AppColors.premiumLinearGradient,
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.help_outline, color: Colors.white, size: 20),
+            child: const Icon(Icons.help_outline, color: const Color(0xFFE65100), size: 20),
           ),
           const SizedBox(width: 16),
           Expanded(

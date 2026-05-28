@@ -137,7 +137,7 @@ class ReviewTicketScreen extends StatelessWidget {
                     minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
-                  child: const Text('Submit Complaint', style: TextStyle(color: Colors.white, fontSize: 16)),
+                  child: const Text('Submit Complaint', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
                 ),
               ),
           ],

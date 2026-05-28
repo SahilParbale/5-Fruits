@@ -217,7 +217,7 @@ class AddressBottomSheet extends StatelessWidget {
                                               child: Text(
                                                 'Default',
                                                 style: AppTextStyles.bodySmall.copyWith(
-                                                  color: Colors.white,
+                                                  color: const Color(0xFFE65100),
                                                   fontSize: 10,
                                                 ),
                                               ),
@@ -318,7 +318,7 @@ class AddressBottomSheet extends StatelessWidget {
             Transform(
               alignment: Alignment.center,
               transform: Matrix4.rotationY(math.pi),
-              child: const Icon(Icons.chat_bubble, color: Colors.white, size: 18),
+              child: const Icon(Icons.chat_bubble, color: const Color(0xFFE65100), size: 18),
             ),
             const Icon(Icons.call, color: Color(0xFF25D366), size: 10),
           ],
