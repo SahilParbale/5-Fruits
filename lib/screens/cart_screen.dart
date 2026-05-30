@@ -145,9 +145,11 @@ class CartScreen extends StatelessWidget {
                     Expanded(
                       child: Text(
                         name, 
-                        style: AppTextStyles.titleMedium.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold, // Bold Title
+                        style: AppTextStyles.bodyMedium.copyWith(
+                          color: const Color(0xFF3B3B3B),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 15,
+                          height: 1.2,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -164,8 +166,8 @@ class CartScreen extends StatelessWidget {
                 Text(
                   weight, 
                   style: AppTextStyles.bodySmall.copyWith(
-                    color: AppColors.secondaryText,
-                    fontSize: 14,
+                    color: Colors.grey[500],
+                    fontSize: 12,
                   )
                 ),
                 const SizedBox(height: 12),
@@ -175,10 +177,11 @@ class CartScreen extends StatelessWidget {
                   children: [
                     Text(
                       '₹${price.toStringAsFixed(2)}',
-                      style: GoogleFonts.barlowCondensed(
-                         fontSize: 22,
-                         fontWeight: FontWeight.bold,
-                         color: AppColors.primaryText,
+                      style: AppTextStyles.bodyLarge.copyWith(
+                         fontWeight: FontWeight.w900,
+                         color: const Color(0xFF3B3B3B),
+                         fontSize: 16,
+                         letterSpacing: -0.5,
                       ),
                     ),
                     Row(

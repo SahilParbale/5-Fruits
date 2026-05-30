@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../theme/app_theme.dart';
 import '../../models/ticket_model.dart';
 import '../order_history_screen.dart'; // For OrderModel
@@ -61,7 +62,14 @@ class _OrderReportEntryScreenState extends State<OrderReportEntryScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Report an Issue', style: AppTextStyles.titleLarge),
+        title: Text(
+          'Report an Issue',
+          style: AppTextStyles.titleMedium.copyWith(
+            color: AppColors.primaryText,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -96,7 +104,11 @@ class _OrderReportEntryScreenState extends State<OrderReportEntryScreen> {
   Widget _buildSectionHeader(String title) {
     return Text(
       title,
-      style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
+      style: AppTextStyles.titleMedium.copyWith(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        color: AppColors.primaryText,
+      ),
     );
   }
 
@@ -229,7 +241,7 @@ class _OrderReportEntryScreenState extends State<OrderReportEntryScreen> {
                   issue.title,
                   textAlign: TextAlign.center,
                   style: AppTextStyles.bodyMedium.copyWith(
-                    fontSize: 13, // Slightly smaller text
+                    fontSize: 14, // Slightly smaller text
                     fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
                     color: isSelected ? const Color(0xFF2C3E50) : AppColors.primaryText,
                   ),
@@ -292,7 +304,14 @@ class _OrderReportEntryScreenState extends State<OrderReportEntryScreen> {
               minimumSize: const Size(double.infinity, 50),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             ),
-            child: const Text('Next: Provide Details', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
+            child: Text(
+              'Next: Provide Details',
+              style: AppTextStyles.titleMedium.copyWith(
+                color: const Color(0xFFE65100),
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ),
       ),

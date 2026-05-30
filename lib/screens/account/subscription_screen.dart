@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../theme/app_theme.dart';
 import '../../models/billing_models.dart';
 
@@ -47,7 +48,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Fruit Pass', style: AppTextStyles.titleLarge),
+        title: Text(
+          'Fruit Pass',
+          style: GoogleFonts.barlowCondensed(
+            color: AppColors.primaryText,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -90,7 +98,15 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('GOLD MEMBER', style: AppTextStyles.titleMedium.copyWith(color: const Color(0xFFE65100), letterSpacing: 1.5)),
+                  Text(
+                    'GOLD MEMBER',
+                    style: GoogleFonts.barlowCondensed(
+                      color: const Color(0xFFE65100),
+                      fontSize: 18,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
@@ -103,7 +119,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               ),
               const SizedBox(height: 24),
               Text('Valid until', style: AppTextStyles.bodySmall.copyWith(color: Colors.black.withOpacity(0.8))),
-              Text('Feb 28, 2026', style: AppTextStyles.headlineMedium.copyWith(color: const Color(0xFFE65100))),
+              Text(
+                'Feb 28, 2026',
+                style: GoogleFonts.barlowCondensed(
+                  color: const Color(0xFFE65100),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               const SizedBox(height: 24),
                Row(
                 children: [
@@ -123,7 +146,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
           ),
         ),
         const SizedBox(height: 32),
-        Text('Your Benefits', style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold)),
+        Text(
+          'Your Benefits',
+          style: GoogleFonts.barlowCondensed(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: AppColors.primaryText,
+          ),
+        ),
         const SizedBox(height: 16),
         _buildBenefitItem('Unlimited Free Delivery', Icons.local_shipping_outlined),
         _buildBenefitItem('10% Extra Discount', Icons.percent),
@@ -136,7 +166,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
             side: const BorderSide(color: Colors.red),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
-          child: const Text('Cancel Subscription', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+          child: Text(
+            'Cancel Subscription',
+            style: GoogleFonts.barlowCondensed(
+              color: Colors.red,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ],
     );
@@ -217,8 +254,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
           child: Center(
             child: Text(
               text,
-              style: AppTextStyles.bodySmall.copyWith(
+              style: GoogleFonts.barlowCondensed(
                 color: isSelected ? Colors.white : AppColors.secondaryText,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -252,13 +290,24 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(plan.name, style: AppTextStyles.titleLarge.copyWith(fontWeight: FontWeight.bold)),
+                  Text(
+                    plan.name,
+                    style: GoogleFonts.barlowCondensed(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
+                    ),
+                  ),
                   RichText(
                     text: TextSpan(
                       children: [
                         TextSpan(
                           text: '₹${_getDiscountedPrice(plan.price).toInt()}',
-                          style: AppTextStyles.headlineMedium.copyWith(fontWeight: FontWeight.bold),
+                          style: GoogleFonts.barlowCondensed(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.primaryText,
+                          ),
                         ),
                         TextSpan(
                           text: '/${_getPeriodText()}',
@@ -293,8 +342,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   ),
                   child: Text(
                     'Choose ${plan.name}',
-                    style: TextStyle(
+                    style: GoogleFonts.barlowCondensed(
                       color: plan.isRecommended ? Colors.white : AppColors.primaryText,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../theme/app_theme.dart';
 import '../../models/ticket_model.dart';
 import '../order_history_screen.dart';
@@ -32,7 +33,14 @@ class _ResolutionPreferenceScreenState extends State<ResolutionPreferenceScreen>
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Preferred Resolution', style: AppTextStyles.titleLarge),
+        title: Text(
+          'Preferred Resolution',
+          style: GoogleFonts.barlowCondensed(
+            color: AppColors.primaryText,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -42,7 +50,14 @@ class _ResolutionPreferenceScreenState extends State<ResolutionPreferenceScreen>
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            Text('How would you like us to resolve this?', style: AppTextStyles.titleMedium),
+            Text(
+              'How would you like us to resolve this?',
+              style: GoogleFonts.barlowCondensed(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppColors.primaryText,
+              ),
+            ),
             const SizedBox(height: 16),
             _buildPreferenceCard(
               ResolutionPreference.replacement,
@@ -105,7 +120,14 @@ class _ResolutionPreferenceScreenState extends State<ResolutionPreferenceScreen>
                 child: Container(
                   constraints: const BoxConstraints(minWidth: double.infinity, minHeight: 50),
                   alignment: Alignment.center,
-                  child: const Text('Review Complaint', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
+                  child: Text(
+                    'Review Complaint',
+                    style: GoogleFonts.barlowCondensed(
+                      color: const Color(0xFFE65100),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ),

@@ -83,7 +83,7 @@ class CustomBottomNavBar extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 label,
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.barlowCondensed(
                   color: const Color(0xFFE65100),
                   fontWeight: FontWeight.w600,
                   fontSize: 14,

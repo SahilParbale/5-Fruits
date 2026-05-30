@@ -17,9 +17,9 @@ class FavoritesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Your Favorites', 
-          style: AppTextStyles.headlineMedium.copyWith(
-            fontSize: 22,
-            fontWeight: FontWeight.w700,
+          style: GoogleFonts.barlowCondensed(
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
             color: AppColors.primaryText,
           ),
         ),
@@ -43,9 +43,9 @@ class FavoritesScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 12, right: 12, top: 8, bottom: 120),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 16,
+                    crossAxisSpacing: 12,
                     mainAxisSpacing: 16,
-                    childAspectRatio: 0.72,
+                    childAspectRatio: 0.86,
                   ),
                   itemCount: favorites.length,
                   itemBuilder: (context, index) {
@@ -62,12 +62,18 @@ class FavoritesScreen extends StatelessWidget {
 
   Widget _buildProductCard(BuildContext context, Map<String, dynamic> product) {
     final price = (product['price'] as num).toDouble();
+    // Mock original price to calculate discount like Blinkit
+    final originalPrice = price * 1.15; 
+    final discountPercent = ((originalPrice - price) / originalPrice * 100).toInt();
+    
     final name = product['name'] as String;
     final size = product['size'] as String;
     final image = product['image'] as String;
+    final isAvailable = product['isAvailable'] as bool? ?? true;
 
     return GestureDetector(
       onTap: () {
+        if (!isAvailable) return;
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -78,68 +84,135 @@ class FavoritesScreen extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(28),
-          boxShadow: const [
-            BoxShadow(
-              blurRadius: 12,
-              spreadRadius: 1,
-              offset: Offset(0, 6),
-              color: Colors.black12,
-            ),
-          ],
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.grey.withOpacity(0.2)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top Section (Image and Glassmorphic Favorite)
-            Expanded(
+            // Top Section (Image and Badges)
+            SizedBox(
+              height: 120,
               child: Stack(
+                clipBehavior: Clip.none,
                 children: [
                   Container(
+                    height: 110,
                     width: double.infinity,
-                    margin: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFFFFF), // Pastel warm background
-                      borderRadius: BorderRadius.circular(24),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(11),
+                        topRight: Radius.circular(11),
+                      ),
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(24),
-                      child: Hero(
-                        tag: 'product_image_$name',
-                        child: image.startsWith('http')
-                            ? Image.network(image, fit: BoxFit.cover, width: double.infinity, height: double.infinity)
-                            : Image.asset(image, fit: BoxFit.cover, width: double.infinity, height: double.infinity, errorBuilder: (context, error, stackTrace) {
-                                return const Center(child: Icon(Icons.image_not_supported_outlined, color: AppColors.mutedText));
-                              }),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(11),
+                        topRight: Radius.circular(11),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.zero,
+                        child: ColorFiltered(
+                          colorFilter: ColorFilter.matrix(
+                            isAvailable
+                                ? <double>[
+                                    1, 0, 0, 0, 0,
+                                    0, 1, 0, 0, 0,
+                                    0, 0, 1, 0, 0,
+                                    0, 0, 0, 1, 0,
+                                  ]
+                                : <double>[
+                                    0.2126, 0.7152, 0.0722, 0, 0,
+                                    0.2126, 0.7152, 0.0722, 0, 0,
+                                    0.2126, 0.7152, 0.0722, 0, 0,
+                                    0, 0, 0, 1, 0,
+                                  ],
+                          ),
+                          child: Hero(
+                            tag: 'product_image_$name',
+                            child: image.startsWith('http')
+                                ? Image.network(image, fit: BoxFit.cover, width: double.infinity, height: double.infinity)
+                                : Image.asset(image, fit: BoxFit.cover, width: double.infinity, height: double.infinity, errorBuilder: (context, error, stackTrace) {
+                                    return const Center(child: Icon(Icons.image_not_supported_outlined, color: AppColors.mutedText));
+                                  }),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                  
-                  // Glassmorphic Favorite Button (Always show as active red heart)
+                  // Discount Badge
                   Positioned(
-                    top: 14,
-                    right: 14,
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                      decoration: const BoxDecoration(
+                        color: AppColors.primaryGreen,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(11),
+                          bottomRight: Radius.circular(8),
+                        ),
+                      ),
+                      child: Text(
+                        '$discountPercent%\nOFF',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.yellow,
+                          fontSize: 9,
+                          fontWeight: FontWeight.bold,
+                          height: 1.1,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // 8 MINS Badge
+                  Positioned(
+                    bottom: 0,
+                    left: 8,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF1F1F5),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.timer_outlined, size: 10, color: Colors.green),
+                          const SizedBox(width: 2),
+                          Text(
+                            '8 MINS',
+                            style: TextStyle(
+                              fontSize: 9,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // Favorite Heart
+                  Positioned(
+                    top: 8,
+                    right: 8,
                     child: GestureDetector(
                       onTap: () {
                         Provider.of<FavoritesProvider>(context, listen: false).toggleFavorite(product);
                       },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                          child: Container(
-                            padding: const EdgeInsets.all(6),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.55),
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white.withOpacity(0.3), width: 1),
-                            ),
-                            child: const Icon(
-                              Icons.favorite,
-                              color: Color(0xFFFF7B6A),
-                              size: 18,
-                            ),
-                          ),
+                      child: Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 4),
+                          ],
+                        ),
+                        child: const Icon(
+                          Icons.favorite,
+                          color: Color(0xFFFF7B6A),
+                          size: 16,
                         ),
                       ),
                     ),
@@ -149,81 +222,106 @@ class FavoritesScreen extends StatelessWidget {
             ),
             
             // Bottom Section (Metadata and CTA)
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: AppTextStyles.bodyLarge.copyWith(
-                      color: AppColors.primaryText,
-                      fontWeight: FontWeight.w600,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 4, 10, 6),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: AppTextStyles.bodyMedium.copyWith(
+                        color: const Color(0xFF3B3B3B),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15,
+                        height: 1.2,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    size,
-                    style: AppTextStyles.bodySmall.copyWith(fontSize: 12),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '₹${price.toStringAsFixed(2)}',
-                        style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.primaryText,
-                          fontSize: 18,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Provider.of<CartProvider>(context, listen: false).addItem(
-                            name,
-                            name,
-                            price,
-                            image,
-                            size,
-                          );
-                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Added $name to cart',
-                                style: GoogleFonts.poppins(color: const Color(0xFFE65100), fontWeight: FontWeight.bold),
+                    const SizedBox(height: 4),
+                    Text(
+                      size,
+                      style: AppTextStyles.bodySmall.copyWith(fontSize: 11, color: Colors.grey[500]),
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '₹${price.toStringAsFixed(2)}',
+                              style: AppTextStyles.bodyLarge.copyWith(
+                                fontWeight: FontWeight.w900,
+                                color: const Color(0xFF3B3B3B),
+                                fontSize: 16,
+                                letterSpacing: -0.5,
                               ),
-                              duration: const Duration(seconds: 2),
-                              backgroundColor: const Color(0xFFE65100),
-                              behavior: SnackBarBehavior.floating,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                              margin: const EdgeInsets.all(16),
                             ),
-                          );
-                        },
-                        child: Container(
-                          width: 36,
-                          height: 36,
-                          decoration: BoxDecoration(
-                            gradient: AppColors.premiumLinearGradient,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
-                                blurRadius: 8,
-                                offset: const Offset(0, 4),
-                              )
-                            ],
-                          ),
-                          child: const Icon(Icons.add, color: const Color(0xFFE65100), size: 20),
+                            Text(
+                              '₹${originalPrice.toInt()}',
+                              style: AppTextStyles.bodySmall.copyWith(
+                                decoration: TextDecoration.lineThrough,
+                                color: Colors.grey[500],
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        if (isAvailable)
+                          GestureDetector(
+                            onTap: () {
+                              Provider.of<CartProvider>(context, listen: false).addItem(
+                                name,
+                                name,
+                                price,
+                                image,
+                                size,
+                              );
+                              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Added $name to cart',
+                                    style: GoogleFonts.barlowCondensed(color: Colors.white, fontWeight: FontWeight.bold),
+                                  ),
+                                  duration: const Duration(seconds: 2),
+                                  backgroundColor: AppColors.primaryGreen,
+                                  behavior: SnackBarBehavior.floating,
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                  margin: const EdgeInsets.all(16),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                              decoration: BoxDecoration(
+                                color: AppColors.inputBackground,
+                                borderRadius: BorderRadius.circular(6),
+                                border: Border.all(color: AppColors.primaryGreen, width: 1),
+                              ),
+                              child: const Text(
+                                'ADD',
+                                style: TextStyle(
+                                  color: AppColors.primaryGreen,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ),
+                          )
+                        else
+                          const Padding(
+                             padding: EdgeInsets.symmetric(vertical: 6),
+                             child: Text('Out of Stock', style: TextStyle(fontSize: 12, color: Colors.red, fontWeight: FontWeight.bold)),
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -249,7 +347,11 @@ class FavoritesScreen extends StatelessWidget {
           const SizedBox(height: 24),
           Text(
             'Your boutique wishlist is empty',
-            style: AppTextStyles.titleLarge.copyWith(fontWeight: FontWeight.w700),
+            style: GoogleFonts.barlowCondensed(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: AppColors.primaryText,
+            ),
           ),
           const SizedBox(height: 12),
           Text(

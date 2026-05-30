@@ -275,7 +275,7 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
               child: Center(
                 child: Text(
                   'SS',
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.barlowCondensed(
                     color: const Color(0xFFE65100), // Gold
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -361,7 +361,7 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
                       builder: (context, cart, child) {
                         return Text(
                           '${cart.itemCount < 10 ? '0' : ''}${cart.itemCount}',
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.barlowCondensed(
                             color: const Color(0xFFE65100),
                             fontWeight: FontWeight.w700,
                             fontSize: 16,
@@ -432,7 +432,7 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('Listening for voice search...', style: GoogleFonts.poppins()),
+                    content: Text('Listening for voice search...', style: GoogleFonts.barlowCondensed()),
                     backgroundColor: const Color(0xFFE65100),
                     behavior: SnackBarBehavior.floating,
                   ),
@@ -448,7 +448,7 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
 
   Widget _buildHeroBanner() {
     return Container(
-      height: 200,
+      height: 140,
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: AppColors.premiumLinearGradient,
@@ -478,7 +478,7 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
           ),
           // Content
           Padding(
-            padding: const EdgeInsets.all(24),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -491,38 +491,38 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
                   ),
                   child: Text(
                     '30 MIN EXPRESS DELIVERY',
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.barlowCondensed(
                       color: const Color(0xFFE65100),
-                      fontSize: 10,
+                      fontSize: 9,
                       fontWeight: FontWeight.w600,
                       letterSpacing: 0.5,
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 6),
                 Text(
                   'Fresh Fruits Delivered\nWithin 30 Minutes',
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.barlowCondensed(
                     color: const Color(0xFFE65100),
-                    fontSize: 22,
+                    fontSize: 18,
                     fontWeight: FontWeight.w700,
                     height: 1.3,
                   ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {
                     widget.onCategorySelect('Organic');
                   },
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
                       'Shop Fresh',
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.barlowCondensed(
                         color: const Color(0xFFE65100),
                         fontWeight: FontWeight.w600,
                         fontSize: 12,
@@ -541,7 +541,7 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
             child: Transform.rotate(
               angle: 0.05,
               child: SizedBox(
-                width: 140,
+                width: 100,
                 child: Image.asset(
                   'assets/images/fruits.png',
                   fit: BoxFit.contain,
@@ -594,67 +594,81 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
         ),
         const SizedBox(height: 16),
         SizedBox(
-          height: 138,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: categories.length,
-            separatorBuilder: (context, index) => const SizedBox(width: 16),
-            itemBuilder: (context, index) {
-              final cat = categories[index];
-              return GestureDetector(
-                onTap: () => widget.onCategorySelect(cat['name']),
-                child: Container(
-                  width: 110,
-                  height: 130,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.03),
-                        blurRadius: 10,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
+          height: 105,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: categories.asMap().entries.map((entry) {
+              final index = entry.key;
+              final cat = entry.value;
+              return Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    left: index == 0 ? 0 : 6,
+                    right: index == categories.length - 1 ? 0 : 6,
                   ),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        flex: 6,
-                        child: Container(
-                          width: double.infinity,
-                          margin: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: cat['color'] as Color,
-                            borderRadius: BorderRadius.circular(16),
+                  child: GestureDetector(
+                    onTap: () => widget.onCategorySelect(cat['name'] as String),
+                    child: Container(
+                      height: 105,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.03),
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
                           ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(16),
-                            child: Image.asset(
-                              cat['image'] as String,
-                              fit: BoxFit.contain,
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            flex: 6,
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: cat['color'] as Color,
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  topRight: Radius.circular(16),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(16),
+                                    topRight: Radius.circular(16),
+                                  ),
+                                  child: Image.asset(
+                                    cat['image'] as String,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: Center(
-                          child: Text(
-                            cat['name'] as String,
-                            style: GoogleFonts.poppins(
-                              color: AppColors.primaryText,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                          Expanded(
+                            flex: 3,
+                            child: Center(
+                              child: Text(
+                                cat['name'] as String,
+                                style: const TextStyle(
+                                  color: Color(0xFF2D2D2D),
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 12,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               );
-            },
+            }).toList(),
           ),
         ),
       ],
@@ -671,7 +685,7 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
           final index = entry.key;
           final title = entry.value;
           return Padding(
-            padding: const EdgeInsets.only(right: 32),
+            padding: const EdgeInsets.only(right: 20),
             child: _buildTabItem(title, index),
           );
         }).toList(),
@@ -697,22 +711,13 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
           Text(
             title,
             key: _tabKeys[index],
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
-              color: isSelected ? AppColors.primaryText : AppColors.secondaryText.withOpacity(0.5),
+            style: GoogleFonts.oswald(
+              fontSize: 28,
+              fontWeight: FontWeight.w700,
+              letterSpacing: -0.5,
+              color: isSelected ? const Color(0xFF2D2D2D) : Colors.grey[400],
             ),
           ),
-          const SizedBox(height: 6),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 250),
-            height: 3,
-            width: isSelected ? 24 : 0,
-            decoration: BoxDecoration(
-              color: const Color(0xFFE65100),
-              borderRadius: BorderRadius.circular(2),
-            ),
-          )
         ],
       ),
     );
@@ -728,9 +733,9 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 16,
+            crossAxisSpacing: 12,
             mainAxisSpacing: 16,
-            childAspectRatio: 0.72,
+            childAspectRatio: 0.86,
           ),
           itemCount: products.length,
           itemBuilder: (context, index) {
@@ -744,12 +749,18 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
 
   Widget _buildProductCard(Map<String, dynamic> product) {
     final price = (product['price'] as num).toDouble();
+    // Mock original price to calculate discount like Blinkit
+    final originalPrice = price * 1.15; 
+    final discountPercent = ((originalPrice - price) / originalPrice * 100).toInt();
+    
     final name = product['name'] as String;
     final size = product['size'] as String;
     final image = product['image'] as String;
+    final isAvailable = product['isAvailable'] as bool? ?? true;
 
     return GestureDetector(
       onTap: () {
+        if (!isAvailable) return;
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -760,155 +771,219 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(28),
-          boxShadow: const [
-            BoxShadow(
-              blurRadius: 12,
-              spreadRadius: 1,
-              offset: Offset(0, 6),
-              color: Colors.black12,
-            ),
-          ],
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.grey.withOpacity(0.2)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top Section (Image and Glassmorphic Favorite)
-            Expanded(
+            // Top Section (Image and Badges)
+            SizedBox(
+              height: 120,
               child: Stack(
+                clipBehavior: Clip.none,
                 children: [
                   Container(
+                    height: 110,
                     width: double.infinity,
-                    margin: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFFFFF), // Pastel warm background for fruit pop
-                      borderRadius: BorderRadius.circular(24),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(11),
+                        topRight: Radius.circular(11),
+                      ),
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(24),
-                      child: Hero(
-                        tag: 'product_image_$name',
-                        child: image.startsWith('http')
-                            ? Image.network(image, fit: BoxFit.cover)
-                            : Image.asset(image, fit: BoxFit.cover, errorBuilder: (context, error, stackTrace) {
-                                return const Center(child: Icon(Icons.image_not_supported_outlined, color: AppColors.mutedText));
-                              }),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(11),
+                        topRight: Radius.circular(11),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.zero,
+                        child: ColorFiltered(
+                          colorFilter: ColorFilter.matrix(
+                            isAvailable
+                                ? <double>[
+                                    1, 0, 0, 0, 0,
+                                    0, 1, 0, 0, 0,
+                                    0, 0, 1, 0, 0,
+                                    0, 0, 0, 1, 0,
+                                  ]
+                                : <double>[
+                                    0.2126, 0.7152, 0.0722, 0, 0,
+                                    0.2126, 0.7152, 0.0722, 0, 0,
+                                    0.2126, 0.7152, 0.0722, 0, 0,
+                                    0, 0, 0, 1, 0,
+                                  ],
+                          ),
+                          child: Hero(
+                            tag: 'product_image_$name',
+                            child: image.startsWith('http')
+                                ? Image.network(image, fit: BoxFit.cover, width: double.infinity, height: double.infinity)
+                                : Image.asset(image, fit: BoxFit.cover, width: double.infinity, height: double.infinity, errorBuilder: (context, error, stackTrace) {
+                                    return const Center(child: Icon(Icons.image_not_supported_outlined, color: AppColors.mutedText));
+                                  }),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                  // Glassmorphic Favorite Button
+                  // Discount Badge
                   Positioned(
-                    top: 14,
-                    right: 14,
-                    child: Consumer<FavoritesProvider>(
-                      builder: (context, favorites, child) {
-                        final isFav = favorites.isFavorite(name);
-                        return GestureDetector(
-                          onTap: () {
-                            favorites.toggleFavorite(product);
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                              child: Container(
-                                padding: const EdgeInsets.all(6),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.55),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(color: Colors.white.withOpacity(0.3), width: 1),
-                                ),
-                                child: Icon(
-                                  isFav ? Icons.favorite : Icons.favorite_border,
-                                  color: isFav ? const Color(0xFFFF7B6A) : const Color(0xFF1B1B1B),
-                                  size: 18,
-                                ),
-                              ),
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                      decoration: const BoxDecoration(
+                        color: AppColors.primaryGreen,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(11),
+                          bottomRight: Radius.circular(8),
+                        ),
+                      ),
+                      child: Text(
+                        '$discountPercent%\nOFF',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.yellow,
+                          fontSize: 9,
+                          fontWeight: FontWeight.bold,
+                          height: 1.1,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // 8 MINS Badge
+                  Positioned(
+                    bottom: 0,
+                    left: 8,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF1F1F5),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.timer_outlined, size: 10, color: Colors.green),
+                          const SizedBox(width: 2),
+                          Text(
+                            '8 MINS',
+                            style: TextStyle(
+                              fontSize: 9,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[800],
                             ),
                           ),
-                        );
-                      },
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
+            
             // Bottom Section (Metadata and CTA)
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: AppTextStyles.bodyLarge.copyWith(
-                      color: AppColors.primaryText,
-                      fontWeight: FontWeight.w600,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 4, 10, 6),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: AppTextStyles.bodyMedium.copyWith(
+                        color: const Color(0xFF3B3B3B),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15,
+                        height: 1.2,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    size,
-                    style: AppTextStyles.bodySmall.copyWith(fontSize: 12),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '₹${price.toStringAsFixed(2)}',
-                        style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.primaryText,
-                          fontSize: 18,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Provider.of<CartProvider>(context, listen: false).addItem(
-                            name,
-                            name,
-                            price,
-                            image,
-                            size,
-                          );
-                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Added $name to cart',
-                                style: GoogleFonts.poppins(color: const Color(0xFFE65100), fontWeight: FontWeight.bold),
+                    const SizedBox(height: 4),
+                    Text(
+                      size,
+                      style: AppTextStyles.bodySmall.copyWith(fontSize: 11, color: Colors.grey[500]),
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '₹${price.toStringAsFixed(2)}',
+                              style: AppTextStyles.bodyLarge.copyWith(
+                                fontWeight: FontWeight.w900,
+                                color: const Color(0xFF3B3B3B),
+                                fontSize: 16,
+                                letterSpacing: -0.5,
                               ),
-                              duration: const Duration(seconds: 2),
-                              backgroundColor: const Color(0xFFE65100),
-                              behavior: SnackBarBehavior.floating,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                              margin: const EdgeInsets.all(16),
                             ),
-                          );
-                        },
-                        child: Container(
-                          width: 36,
-                          height: 36,
-                          decoration: BoxDecoration(
-                            gradient: AppColors.premiumLinearGradient,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
-                                blurRadius: 8,
-                                offset: const Offset(0, 4),
-                              )
-                            ],
-                          ),
-                          child: const Icon(Icons.add, color: const Color(0xFFE65100), size: 20),
+                            Text(
+                              '₹${originalPrice.toInt()}',
+                              style: AppTextStyles.bodySmall.copyWith(
+                                decoration: TextDecoration.lineThrough,
+                                color: Colors.grey[500],
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        if (isAvailable)
+                          GestureDetector(
+                            onTap: () {
+                              Provider.of<CartProvider>(context, listen: false).addItem(
+                                name,
+                                name,
+                                price,
+                                image,
+                                size,
+                              );
+                              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Added $name to cart',
+                                    style: GoogleFonts.barlowCondensed(color: Colors.white, fontWeight: FontWeight.bold),
+                                  ),
+                                  duration: const Duration(seconds: 2),
+                                  backgroundColor: AppColors.primaryGreen,
+                                  behavior: SnackBarBehavior.floating,
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                  margin: const EdgeInsets.all(16),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                              decoration: BoxDecoration(
+                                color: AppColors.inputBackground,
+                                borderRadius: BorderRadius.circular(6),
+                                border: Border.all(color: AppColors.primaryGreen, width: 1),
+                              ),
+                              child: const Text(
+                                'ADD',
+                                style: TextStyle(
+                                  color: AppColors.primaryGreen,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ),
+                          )
+                        else
+                          const Padding(
+                             padding: EdgeInsets.symmetric(vertical: 6),
+                             child: Text('Out of Stock', style: TextStyle(fontSize: 12, color: Colors.red, fontWeight: FontWeight.bold)),
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -944,9 +1019,9 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 16,
+        crossAxisSpacing: 12,
         mainAxisSpacing: 16,
-        childAspectRatio: 0.72,
+        childAspectRatio: 0.62,
       ),
       itemCount: filteredProducts.length,
       itemBuilder: (context, index) {
@@ -985,12 +1060,12 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
               children: [
                 Text(
                   'ORGANIC LIFE',
-                  style: GoogleFonts.poppins(color: const Color(0xFFE65100), fontSize: 10, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.barlowCondensed(color: const Color(0xFFE65100), fontSize: 10, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   'Meal prep with fresh organic greens',
-                  style: GoogleFonts.poppins(color: const Color(0xFFE65100), fontWeight: FontWeight.w600, fontSize: 14),
+                  style: GoogleFonts.barlowCondensed(color: const Color(0xFFE65100), fontWeight: FontWeight.w600, fontSize: 14),
                 ),
               ],
             ),
@@ -1018,12 +1093,12 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
               children: [
                 Text(
                   'HEALTH DIET',
-                  style: GoogleFonts.poppins(color: const Color(0xFFF8D7DA), fontSize: 10, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.barlowCondensed(color: const Color(0xFFF8D7DA), fontSize: 10, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   'Making the most of seasonal fruits',
-                  style: GoogleFonts.poppins(color: const Color(0xFFE65100), fontWeight: FontWeight.w600, fontSize: 14),
+                  style: GoogleFonts.barlowCondensed(color: const Color(0xFFE65100), fontWeight: FontWeight.w600, fontSize: 14),
                 ),
               ],
             ),

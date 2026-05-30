@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../theme/app_theme.dart';
 import 'ticket_tracking_screen.dart';
 
@@ -26,9 +27,23 @@ class TicketSuccessScreen extends StatelessWidget {
                 child: const Icon(Icons.check_circle, color: Color(0xFF2C3E50), size: 64),
               ),
               const SizedBox(height: 24),
-              Text('Complaint Submitted!', style: AppTextStyles.headlineLarge.copyWith(fontWeight: FontWeight.bold)),
+              Text(
+                'Complaint Submitted!',
+                style: GoogleFonts.barlowCondensed(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primaryText,
+                ),
+              ),
               const SizedBox(height: 8),
-              Text('We have received your request and will resolve it shortly.', textAlign: TextAlign.center, style: AppTextStyles.bodyMedium.copyWith(color: AppColors.secondaryText)),
+              Text(
+                'We have received your request and will resolve it shortly.',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.barlowCondensed(
+                  fontSize: 16,
+                  color: AppColors.secondaryText,
+                ),
+              ),
               const SizedBox(height: 32),
               Container(
                 padding: const EdgeInsets.all(16),
@@ -67,7 +82,14 @@ class TicketSuccessScreen extends StatelessWidget {
                     minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
-                  child: const Text('Track Status', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
+                  child: Text(
+                    'Track Status',
+                    style: GoogleFonts.barlowCondensed(
+                      color: const Color(0xFFE65100),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
@@ -75,7 +97,14 @@ class TicketSuccessScreen extends StatelessWidget {
                 onPressed: () {
                    Navigator.popUntil(context, (route) => route.isFirst);
                 },
-                child: Text('Back to Home', style: AppTextStyles.bodyMedium.copyWith(color: const Color(0xFF2C3E50), fontWeight: FontWeight.bold)),
+                child: Text(
+                  'Back to Home',
+                  style: GoogleFonts.barlowCondensed(
+                    color: const Color(0xFF2C3E50),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           ),

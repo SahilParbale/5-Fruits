@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../theme/app_theme.dart';
 import '../../models/ticket_model.dart';
 import '../order_history_screen.dart';
@@ -27,7 +28,14 @@ class ReviewTicketScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Review & Submit', style: AppTextStyles.titleLarge),
+        title: Text(
+          'Review & Submit',
+          style: GoogleFonts.barlowCondensed(
+            color: AppColors.primaryText,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -137,7 +145,14 @@ class ReviewTicketScreen extends StatelessWidget {
                     minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
-                  child: const Text('Submit Complaint', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
+                  child: Text(
+                    'Submit Complaint',
+                    style: GoogleFonts.barlowCondensed(
+                      color: const Color(0xFFE65100),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
           ],
@@ -149,7 +164,14 @@ class ReviewTicketScreen extends StatelessWidget {
   Widget _buildSectionHeader(String title) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
-      child: Text(title, style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold)),
+      child: Text(
+        title,
+        style: GoogleFonts.barlowCondensed(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: AppColors.primaryText,
+        ),
+      ),
     );
   }
 

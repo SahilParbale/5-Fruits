@@ -189,7 +189,7 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
                               children: [
                                 Text(
                                   'ORGANIC BOUTIQUE',
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.barlowCondensed(
                                     color: const Color(0xFFD84315),
                                     fontWeight: FontWeight.w700,
                                     fontSize: 10,
@@ -208,7 +208,7 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
                                       const SizedBox(width: 4),
                                       Text(
                                         'GOLD MEMBER',
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.barlowCondensed(
                                           color: const Color(0xFF1B1B1B),
                                           fontWeight: FontWeight.bold,
                                           fontSize: 9,
@@ -222,7 +222,7 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
                             const SizedBox(height: 8),
                             Text(
                               'Sahil Sharma',
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.barlowCondensed(
                                 color: const Color(0xFF0D1C2E),
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
@@ -231,7 +231,7 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
                             const SizedBox(height: 4),
                             Text(
                               'Member ID: #OB-2026-9875',
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.barlowCondensed(
                                 color: const Color(0xFF0D1C2E).withOpacity(0.8),
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
@@ -290,7 +290,7 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
             const SizedBox(width: 8),
             Text(
               value,
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.barlowCondensed(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: const Color(0xFFD84315),
@@ -301,7 +301,7 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
         const SizedBox(height: 6),
         Text(
           label,
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.barlowCondensed(
             fontSize: 10,
             fontWeight: FontWeight.w600,
             color: const Color(0xFFD84315),

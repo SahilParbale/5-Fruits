@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../providers/cart_provider.dart';
 import 'cart_screen.dart';
@@ -181,7 +182,14 @@ class OrderHistoryScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Order History', style: AppTextStyles.titleLarge),
+        title: Text(
+          'Order History',
+          style: AppTextStyles.titleMedium.copyWith(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: AppColors.primaryText,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -249,11 +257,10 @@ class OrderHistoryScreen extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: const Color(0xFFE65100), width: 1),
         borderRadius: BorderRadius.circular(AppDefaults.smoothRadius),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withOpacity(0.04),
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),
@@ -266,10 +273,10 @@ class OrderHistoryScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: const BoxDecoration(
-                  color: const Color(0xFFE65100),
+                  gradient: AppColors.premiumLinearGradient,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.shopping_bag_outlined, color: const Color(0xFFE65100), size: 24),
+                child: const Icon(Icons.shopping_bag_outlined, color: Colors.white, size: 24),
               ),
               const SizedBox(width: 16),
               Column(
@@ -277,7 +284,11 @@ class OrderHistoryScreen extends StatelessWidget {
                 children: [
                   Text(
                     '${_orders.length} Orders',
-                    style: AppTextStyles.titleLarge.copyWith(color: AppColors.primaryText),
+                    style: AppTextStyles.titleMedium.copyWith(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
+                    ),
                   ),
                   Text(
                     'Total purchases',
@@ -313,7 +324,7 @@ class OrderHistoryScreen extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           value,
-          style: AppTextStyles.titleLarge.copyWith(color: AppColors.primaryText),
+          style: AppTextStyles.titleMedium.copyWith(color: AppColors.primaryText, fontSize: 16, fontWeight: FontWeight.bold),
         ),
       ],
     );
@@ -324,7 +335,11 @@ class OrderHistoryScreen extends StatelessWidget {
       padding: const EdgeInsets.only(left: 12, bottom: 12),
       child: Text(
         title,
-        style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
+        style: AppTextStyles.titleMedium.copyWith(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: AppColors.primaryText,
+        ),
       ),
     );
   }
@@ -354,10 +369,10 @@ class OrderHistoryScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF1B1B1B),
+                    gradient: AppColors.premiumLinearGradient,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Icon(Icons.inventory_2_outlined, color: const Color(0xFFE65100), size: 22),
+                  child: const Icon(Icons.inventory_2_outlined, color: Colors.white, size: 22),
                 ),
                 const SizedBox(width: 12),
                 Column(
@@ -560,7 +575,11 @@ class OrderHistoryScreen extends StatelessWidget {
                 children: [
                    Text(
                     'Order Details',
-                    style: AppTextStyles.titleLarge.copyWith(fontWeight: FontWeight.bold),
+                    style: AppTextStyles.titleMedium.copyWith(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
+                    ),
                   ),
                   IconButton(
                     icon: const Icon(Icons.close),
@@ -605,7 +624,14 @@ class OrderHistoryScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 24),
                     // Items List
-                    Text('Items', style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold)),
+                    Text(
+                      'Items',
+                      style: AppTextStyles.titleMedium.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primaryText,
+                      ),
+                    ),
                     const SizedBox(height: 16),
                     ...order.items.map((item) => Padding(
                       padding: const EdgeInsets.only(bottom: 16),
@@ -635,7 +661,14 @@ class OrderHistoryScreen extends StatelessWidget {
                     )),
                     const Divider(height: 32),
                     // Bill Details
-                    Text('Payment Details', style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold)),
+                    Text(
+                      'Payment Details',
+                      style: AppTextStyles.titleMedium.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primaryText,
+                      ),
+                    ),
                     const SizedBox(height: 16),
                     _buildBillRow('Item Total', '₹${order.total.toStringAsFixed(2)}'),
                     _buildBillRow('Delivery Fee', '₹2.00'), // Mocked
@@ -644,7 +677,14 @@ class OrderHistoryScreen extends StatelessWidget {
                     _buildBillRow('Grand Total', '₹${(order.total + 2 + order.total * 0.05).toStringAsFixed(2)}', isBold: true),
                     const SizedBox(height: 24),
                     // Address & Payment (Mocked for professional look)
-                    Text('Delivery Address', style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold)),
+                    Text(
+                      'Delivery Address',
+                      style: AppTextStyles.titleMedium.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primaryText,
+                      ),
+                    ),
                     const SizedBox(height: 8),
                     Row(
                       children: [
@@ -664,7 +704,14 @@ class OrderHistoryScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 16),
-                    Text('Payment Method', style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold)),
+                    Text(
+                      'Payment Method',
+                      style: AppTextStyles.titleMedium.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primaryText,
+                      ),
+                    ),
                     const SizedBox(height: 8),
                     Row(
                       children: [

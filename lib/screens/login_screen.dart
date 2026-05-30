@@ -647,7 +647,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
               const SizedBox(width: 12),
               Text(
                 'Sign in with Google',
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.barlowCondensed(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.black87,
@@ -658,7 +658,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
           const SizedBox(height: 8),
           Text(
             'to continue to 5-Fruits',
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.barlowCondensed(
               fontSize: 14,
               color: Colors.black54,
             ),
@@ -692,7 +692,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
           const SizedBox(height: 20),
           Text(
             'To continue, Google will share your name, email address, language preference, and profile picture with 5-Fruits.',
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.barlowCondensed(
               fontSize: 11,
               color: Colors.grey[500],
               height: 1.5,
@@ -743,7 +743,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 children: [
                   Text(
                     name,
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.barlowCondensed(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
@@ -752,7 +752,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                   const SizedBox(height: 2),
                   Text(
                     email,
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.barlowCondensed(
                       fontSize: 13,
                       color: Colors.black54,
                     ),
@@ -778,7 +778,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(
           'Add Google Account',
-          style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 18),
+          style: GoogleFonts.barlowCondensed(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         content: Form(
           key: formKey,

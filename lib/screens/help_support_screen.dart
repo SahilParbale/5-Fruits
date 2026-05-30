@@ -14,7 +14,14 @@ class HelpSupportScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Help & Support', style: AppTextStyles.titleLarge),
+        title: Text(
+          'Help & Support',
+          style: AppTextStyles.titleMedium.copyWith(
+            color: AppColors.primaryText,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -105,7 +112,7 @@ class HelpSupportScreen extends StatelessWidget {
       child: Text(
         title,
         style: AppTextStyles.titleMedium.copyWith(
-          fontSize: 18,
+          fontSize: 16,
           fontWeight: FontWeight.bold,
           color: AppColors.primaryText,
         ),
@@ -125,14 +132,8 @@ class HelpSupportScreen extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           gradient: AppColors.premiumLinearGradient, // Standard Charcoal Gradient
-          borderRadius: BorderRadius.circular(AppDefaults.smoothRadius),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.3),
-              blurRadius: 15,
-              offset: const Offset(0, 8),
-            ),
-          ],
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.grey.withOpacity(0.2)),
         ),
         child: Row(
           children: [
@@ -153,6 +154,7 @@ class HelpSupportScreen extends StatelessWidget {
                     'Live Chat',
                     style: AppTextStyles.titleMedium.copyWith(
                       color: const Color(0xFFE65100),
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -175,9 +177,10 @@ class HelpSupportScreen extends StatelessWidget {
               ),
               child: Text(
                 'Start',
-                style: AppTextStyles.bodySmall.copyWith(
+                style: AppTextStyles.bodyMedium.copyWith(
                   color: const Color(0xFF1B1B1B),
                   fontWeight: FontWeight.bold,
+                  fontSize: 15,
                 ),
               ),
             ),
@@ -202,14 +205,8 @@ class HelpSupportScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(AppDefaults.smoothRadius),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.grey.withOpacity(0.2)),
         ),
         child: Row(
           children: [
@@ -228,8 +225,9 @@ class HelpSupportScreen extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: AppTextStyles.bodyLarge.copyWith(
-                      fontWeight: FontWeight.w700,
+                    style: GoogleFonts.barlowCondensed(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                       color: AppColors.primaryText,
                     ),
                   ),
@@ -297,8 +295,8 @@ class HelpSupportScreen extends StatelessWidget {
            children: [
              Text(
                'Frequently Asked',
-               style: AppTextStyles.titleMedium.copyWith(
-                 fontSize: 18,
+               style: GoogleFonts.barlowCondensed(
+                 fontSize: 20,
                  fontWeight: FontWeight.bold,
                  color: AppColors.primaryText,
                ),
@@ -312,9 +310,10 @@ class HelpSupportScreen extends StatelessWidget {
                 },
                 child: Text(
                   'View All',
-                  style: AppTextStyles.bodySmall.copyWith(
+                  style: GoogleFonts.barlowCondensed(
                     color: const Color(0xFF1B1B1B),
                     fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
                 ),
               ),
@@ -337,14 +336,8 @@ class HelpSupportScreen extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(AppDefaults.smoothRadius),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.withOpacity(0.2)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -364,7 +357,8 @@ class HelpSupportScreen extends StatelessWidget {
               children: [
                 Text(
                   question,
-                  style: AppTextStyles.bodyMedium.copyWith(
+                  style: GoogleFonts.barlowCondensed(
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: AppColors.primaryText,
                   ),

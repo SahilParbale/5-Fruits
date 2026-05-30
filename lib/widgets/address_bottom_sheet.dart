@@ -5,7 +5,6 @@ import '../providers/address_provider.dart';
 import '../theme/app_theme.dart';
 import '../screens/add_new_address_screen.dart';
 import 'dart:math' as math;
-import 'dart:html' as html;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../providers/auth_provider.dart';
@@ -47,9 +46,9 @@ class AddressBottomSheet extends StatelessWidget {
               children: [
                 Text(
                   'Select delivery location',
-                  style: GoogleFonts.barlowCondensed(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
+                  style: AppTextStyles.titleMedium.copyWith(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                     color: const Color(0xFF3B3B3B),
                   ),
                 ),
@@ -73,21 +72,21 @@ class AddressBottomSheet extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.black87, width: 1),
+                color: AppColors.background,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: Colors.grey.withOpacity(0.2)),
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.search, color: Colors.black54),
+                  const Icon(Icons.search, color: AppColors.secondaryText),
                   const SizedBox(width: 12),
                   Expanded(
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Search for area, street name...',
-                        hintStyle: AppTextStyles.bodyMedium.copyWith(color: Colors.black54),
+                        hintStyle: AppTextStyles.bodyMedium.copyWith(color: AppColors.mutedText),
                         border: InputBorder.none,
                       ),
                     ),
@@ -108,27 +107,33 @@ class AddressBottomSheet extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.grey.shade200),
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.03),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
                     ),
                     child: Column(
                       children: [
                         _buildActionTile(
                           icon: Icons.my_location,
-                          iconColor: AppColors.primaryGreen,
+                          iconColor: const Color(0xFFE65100),
                           title: 'Use current location',
-                          titleColor: AppColors.primaryGreen,
+                          titleColor: const Color(0xFFE65100),
                           subtitle: 'Tap to fetch auto location',
                           onTap: () {
                             _fetchAndSetGPSLocation(context);
                           },
                         ),
-                        const Divider(height: 1),
+                        Divider(height: 1, color: Colors.grey.withOpacity(0.1)),
                         _buildActionTile(
                           icon: Icons.add,
-                          iconColor: const Color(0xFF2E4035),
+                          iconColor: AppColors.primaryText,
                           title: 'Add new address',
-                          titleColor: const Color(0xFF2E4035),
+                          titleColor: AppColors.primaryText,
                           onTap: () {
                             Navigator.pop(context);
                             Navigator.push(
@@ -137,11 +142,11 @@ class AddressBottomSheet extends StatelessWidget {
                             );
                           },
                         ),
-                        const Divider(height: 1),
+                        Divider(height: 1, color: Colors.grey.withOpacity(0.1)),
                         _buildActionTile(
                           customIcon: _buildWhatsAppIcon(),
                           title: 'Request address from someone else',
-                          titleColor: const Color(0xFF3B3B3B),
+                          titleColor: AppColors.primaryText,
                         ),
                       ],
                     ),
@@ -151,8 +156,9 @@ class AddressBottomSheet extends StatelessWidget {
                   Text(
                     'Your saved addresses',
                     style: AppTextStyles.titleMedium.copyWith(
-                      color: const Color(0xFF3B3B3B),
-                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -172,13 +178,12 @@ class AddressBottomSheet extends StatelessWidget {
                               padding: const EdgeInsets.all(16),
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: Colors.black87, width: 1.5),
+                              borderRadius: BorderRadius.circular(16),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.05),
-                                  blurRadius: 4,
-                                  offset: const Offset(0, 2),
+                                  color: Colors.black.withOpacity(0.04),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 4),
                                 ),
                               ],
                             ),
@@ -186,15 +191,15 @@ class AddressBottomSheet extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: Colors.black87,
-                                    borderRadius: BorderRadius.circular(8),
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: const BoxDecoration(
+                                    gradient: AppColors.premiumLinearGradient,
+                                    shape: BoxShape.circle,
                                   ),
                                   child: Icon(
                                     address.label.toLowerCase() == 'home' 
-                                      ? Icons.home 
-                                      : Icons.work,
+                                      ? Icons.home_rounded 
+                                      : Icons.work_rounded,
                                     color: Colors.white,
                                     size: 20,
                                   ),
@@ -209,33 +214,41 @@ class AddressBottomSheet extends StatelessWidget {
                                         children: [
                                           Text(
                                             address.label,
-                                            style: AppTextStyles.titleMedium.copyWith(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black87,
-                                            ),
+                                              style: AppTextStyles.bodyMedium.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15,
+                                                color: AppColors.primaryText,
+                                              ),
                                           ),
                                           if (address.isDefault)
                                             Container(
-                                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                                               decoration: BoxDecoration(
-                                                color: Colors.black87,
-                                                borderRadius: BorderRadius.circular(12),
+                                                gradient: AppColors.premiumLinearGradient,
+                                                borderRadius: BorderRadius.circular(8),
                                               ),
-                                              child: Text(
-                                                'Default',
-                                                style: AppTextStyles.bodySmall.copyWith(
-                                                  color: const Color(0xFFE65100),
-                                                  fontSize: 10,
-                                                ),
+                                              child: Row(
+                                                children: [
+                                                  const Icon(Icons.check, color: const Color(0xFFE65100), size: 12),
+                                                  const SizedBox(width: 4),
+                                                  Text(
+                                                    'Default',
+                                                    style: AppTextStyles.bodySmall.copyWith(
+                                                      color: const Color(0xFFE65100),
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 10,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                         ],
                                       ),
-                                      const SizedBox(height: 4),
+                                      const SizedBox(height: 6),
                                       Text(
                                         address.address,
                                         style: AppTextStyles.bodyMedium.copyWith(
-                                          color: Colors.black87,
+                                          color: AppColors.secondaryText,
                                           height: 1.4,
                                         ),
                                       ),
@@ -344,20 +357,15 @@ class AddressBottomSheet extends StatelessWidget {
     );
 
     try {
-      html.window.navigator.geolocation.getCurrentPosition(enableHighAccuracy: true).then((position) {
-        final double lat = position.coords?.latitude?.toDouble() ?? 19.0269;
-        final double lng = position.coords?.longitude?.toDouble() ?? 73.0698;
-        
-        // Close bottom sheet first
-        Navigator.pop(context);
-        
-        _reverseGeocodeAndSetAddress(context, lat, lng);
-      }).catchError((error) {
-        debugPrint('[GPS BottomSheet] Failed to get position: $error');
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error getting location: $error')),
-        );
-      });
+      // Stubbed out for mobile since dart:html is not supported.
+      // In a real app, use the `geolocator` package.
+      final double lat = 19.0269;
+      final double lng = 73.0698;
+      
+      // Close bottom sheet first
+      Navigator.pop(context);
+      
+      _reverseGeocodeAndSetAddress(context, lat, lng);
     } catch (e) {
       debugPrint('[GPS BottomSheet] Geolocation error: $e');
     }

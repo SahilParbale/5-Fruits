@@ -37,49 +37,49 @@ class AppDefaults {
 }
 
 class AppTextStyles {
-  // Screen Titles: 34pt, w700
-  static TextStyle get headlineLarge => GoogleFonts.poppins(
-    fontSize: 34,
+  // Screen Titles: 40pt, w700
+  static TextStyle get headlineLarge => GoogleFonts.dmSans(
+    fontSize: 40,
     fontWeight: FontWeight.w700,
     color: AppColors.primaryText,
     letterSpacing: -0.5,
   );
 
-  // Section Headings: 24pt, w600
-  static TextStyle get headlineMedium => GoogleFonts.poppins(
+  // Section Headings: 30pt, w600
+  static TextStyle get headlineMedium => GoogleFonts.dmSans(
+    fontSize: 30,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primaryText,
+  );
+
+  static TextStyle get titleLarge => GoogleFonts.dmSans(
+    fontSize: 28,
+    fontWeight: FontWeight.w700,
+    color: AppColors.primaryText,
+  );
+
+  // Product Names: 24pt, w600
+  static TextStyle get titleMedium => GoogleFonts.dmSans(
     fontSize: 24,
     fontWeight: FontWeight.w600,
     color: AppColors.primaryText,
   );
 
-  static TextStyle get titleLarge => GoogleFonts.poppins(
-    fontSize: 22,
-    fontWeight: FontWeight.w700,
-    color: AppColors.primaryText,
-  );
-
-  // Product Names: 18pt, w600
-  static TextStyle get titleMedium => GoogleFonts.poppins(
-    fontSize: 18,
-    fontWeight: FontWeight.w600,
-    color: AppColors.primaryText,
-  );
-
-  static TextStyle get bodyLarge => GoogleFonts.poppins(
-    fontSize: 16,
+  static TextStyle get bodyLarge => GoogleFonts.dmSans(
+    fontSize: 20,
     fontWeight: FontWeight.w500,
     color: AppColors.primaryText,
   );
 
-  static TextStyle get bodyMedium => GoogleFonts.poppins(
-    fontSize: 14,
+  static TextStyle get bodyMedium => GoogleFonts.dmSans(
+    fontSize: 18,
     fontWeight: FontWeight.w500,
     color: AppColors.primaryText,
   );
   
-  // Small Info: 14pt, w400
-  static TextStyle get bodySmall => GoogleFonts.poppins(
-    fontSize: 14,
+  // Small Info: 16pt, w400
+  static TextStyle get bodySmall => GoogleFonts.dmSans(
+    fontSize: 16,
     fontWeight: FontWeight.w400,
     color: AppColors.secondaryText,
   );

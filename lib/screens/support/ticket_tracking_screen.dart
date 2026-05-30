@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../theme/app_theme.dart';
 
 class TicketTrackingScreen extends StatelessWidget {
@@ -11,7 +12,14 @@ class TicketTrackingScreen extends StatelessWidget {
      return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Track Ticket', style: AppTextStyles.titleLarge),
+        title: Text(
+          'Track Ticket',
+          style: GoogleFonts.barlowCondensed(
+            color: AppColors.primaryText,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -69,7 +77,14 @@ class TicketTrackingScreen extends StatelessWidget {
                   // Navigate to Chat
                 },
                  icon: const Icon(Icons.chat_bubble_outline, color: const Color(0xFFE65100)),
-                label: const Text('Chat with Support', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
+                label: Text(
+                  'Chat with Support',
+                  style: GoogleFonts.barlowCondensed(
+                    color: const Color(0xFFE65100),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
                   disabledBackgroundColor: Colors.transparent,

@@ -14,7 +14,14 @@ class MyAddressesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('My Addresses', style: AppTextStyles.titleLarge),
+        title: Text(
+          'My Addresses',
+          style: GoogleFonts.barlowCondensed(
+            fontSize: 24,
+            fontWeight: FontWeight.w700,
+            color: AppColors.primaryText,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -85,7 +92,11 @@ class MyAddressesScreen extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: Text(
           title,
-          style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
+          style: GoogleFonts.barlowCondensed(
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: AppColors.primaryText,
+          ),
         ),
       ),
     );
@@ -137,7 +148,7 @@ class MyAddressesScreen extends StatelessWidget {
                   const SizedBox(width: 16),
                   Text(
                     address.label,
-                    style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
+                    style: AppTextStyles.bodyMedium.copyWith(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                 ],
               ),
@@ -323,9 +334,10 @@ class MyAddressesScreen extends StatelessWidget {
               children: [
                 Text(
                   'Add New Address',
-                  style: AppTextStyles.titleMedium.copyWith(
+                  style: AppTextStyles.bodyMedium.copyWith(
                     color: const Color(0xFFE65100),
                     fontWeight: FontWeight.bold,
+                    fontSize: 15,
                   ),
                 ),
                 Text(

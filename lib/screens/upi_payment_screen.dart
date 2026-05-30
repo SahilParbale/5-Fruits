@@ -14,7 +14,14 @@ class UPIPaymentScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('UPI Payment', style: AppTextStyles.titleLarge),
+        title: Text(
+          'UPI Payment',
+          style: AppTextStyles.titleMedium.copyWith(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: AppColors.primaryText,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -89,6 +96,7 @@ class UPIPaymentScreen extends StatelessWidget {
     return Text(
       title,
       style: AppTextStyles.titleMedium.copyWith(
+        fontSize: 16,
         fontWeight: FontWeight.bold,
         color: const Color(0xFF3B3B3B),
       ),
@@ -404,9 +412,10 @@ class UPIPaymentScreen extends StatelessWidget {
             children: [
               Text(
                 'Add New UPI ID',
-                style: AppTextStyles.titleMedium.copyWith(
+                style: AppTextStyles.bodyMedium.copyWith(
                   color: const Color(0xFFE65100),
                   fontWeight: FontWeight.bold,
+                  fontSize: 15,
                 ),
               ),
               Text(

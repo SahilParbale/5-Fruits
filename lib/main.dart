@@ -223,7 +223,11 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         _currentIndex = index;
       });
-      _pageController.jumpToPage(index);
+      _pageController.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.fastOutSlowIn,
+      );
     }
   }
 

@@ -67,7 +67,14 @@ class _AddNewUPIScreenState extends State<AddNewUPIScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text(widget.upiToEdit != null ? 'Edit UPI ID' : 'Add UPI ID', style: AppTextStyles.titleLarge),
+        title: Text(
+          widget.upiToEdit != null ? 'Edit UPI ID' : 'Add UPI ID',
+          style: AppTextStyles.titleMedium.copyWith(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: AppColors.primaryText,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -205,7 +212,8 @@ class _AddNewUPIScreenState extends State<AddNewUPIScreen> {
   Widget _buildSectionTitle(String title) {
     return Text(
       title,
-      style: AppTextStyles.bodyLarge.copyWith(
+      style: AppTextStyles.titleMedium.copyWith(
+        fontSize: 16,
         fontWeight: FontWeight.bold,
         color: const Color(0xFF3B3B3B),
       ),
@@ -251,12 +259,12 @@ class _AddNewUPIScreenState extends State<AddNewUPIScreen> {
                 Container(
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
-                    color: isSelected ? Colors.white.withOpacity(0.2) : const Color(0xFF1B1B1B).withOpacity(0.1),
+                    color: isSelected ? Colors.white.withOpacity(0.2) : const Color(0xFFE65100).withOpacity(0.1),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     provider['icon'],
-                    color: isSelected ? Colors.white : const Color(0xFF1B1B1B),
+                    color: isSelected ? Colors.white : const Color(0xFFE65100),
                     size: 16,
                   ),
                 ),
@@ -306,10 +314,10 @@ class _AddNewUPIScreenState extends State<AddNewUPIScreen> {
       ),
       child: TextField(
         controller: _upiIdController,
-        style: AppTextStyles.bodyLarge.copyWith(fontWeight: FontWeight.w600),
+        style: AppTextStyles.bodyMedium.copyWith(fontWeight: FontWeight.w600, fontSize: 15),
         decoration: InputDecoration(
           hintText: 'yourname@bank',
-          hintStyle: AppTextStyles.bodyLarge.copyWith(color: AppColors.mutedText.withOpacity(0.7)),
+          hintStyle: AppTextStyles.bodyMedium.copyWith(color: AppColors.mutedText.withOpacity(0.7), fontSize: 15),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           prefixIcon: Container(
@@ -372,7 +380,7 @@ class _AddNewUPIScreenState extends State<AddNewUPIScreen> {
           Switch(
             value: _isDefault,
             onChanged: (value) => setState(() => _isDefault = value),
-            activeColor: const Color(0xFF2C3E50), // Midnight Navy
+            activeColor: const Color(0xFFE65100), // Theme Orange
           ),
         ],
       ),
@@ -478,11 +486,10 @@ class _AddNewUPIScreenState extends State<AddNewUPIScreen> {
         child: Center(
           child: Text(
             widget.upiToEdit != null ? 'Update UPI ID' : 'Save UPI ID',
-            style: GoogleFonts.barlowCondensed(
+            style: AppTextStyles.titleMedium.copyWith(
               color: const Color(0xFFE65100),
               fontWeight: FontWeight.bold,
-              fontSize: 24,
-              letterSpacing: 1,
+              fontSize: 18,
             ),
           ),
         ),

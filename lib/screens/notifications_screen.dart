@@ -10,7 +10,14 @@ class NotificationsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Notifications', style: AppTextStyles.titleLarge),
+        title: Text(
+          'Notifications',
+          style: GoogleFonts.barlowCondensed(
+            color: AppColors.primaryText,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -23,9 +30,10 @@ class NotificationsScreen extends StatelessWidget {
               child: Text(
                 'Mark all\nread',
                 textAlign: TextAlign.right,
-                style: AppTextStyles.bodySmall.copyWith(
+                style: GoogleFonts.barlowCondensed(
                   color: const Color(0xFF1B1B1B),
                   fontWeight: FontWeight.bold,
+                  fontSize: 16,
                   height: 1.1,
                 ),
               ),
@@ -131,7 +139,11 @@ class NotificationsScreen extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: Text(
           title,
-          style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
+          style: GoogleFonts.barlowCondensed(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: AppColors.primaryText,
+          ),
         ),
       ),
     );
@@ -149,14 +161,8 @@ class NotificationsScreen extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(AppDefaults.smoothRadius),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.withOpacity(0.2)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -179,7 +185,11 @@ class NotificationsScreen extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: AppTextStyles.bodyLarge.copyWith(fontWeight: FontWeight.bold),
+                      style: GoogleFonts.barlowCondensed(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primaryText,
+                      ),
                     ),
                     if (isUnread)
                       Container(

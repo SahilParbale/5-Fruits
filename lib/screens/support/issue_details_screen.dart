@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:io';
 import '../../theme/app_theme.dart';
 import '../../models/ticket_model.dart';
@@ -84,7 +85,14 @@ class _IssueDetailsScreenState extends State<IssueDetailsScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Issue Details', style: AppTextStyles.titleLarge),
+        title: Text(
+          'Issue Details',
+          style: GoogleFonts.barlowCondensed(
+            color: AppColors.primaryText,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -95,7 +103,14 @@ class _IssueDetailsScreenState extends State<IssueDetailsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Upload Evidence (Recommended)', style: AppTextStyles.titleMedium),
+            Text(
+              'Upload Evidence (Recommended)',
+              style: GoogleFonts.barlowCondensed(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppColors.primaryText,
+              ),
+            ),
             const SizedBox(height: 8),
             Text('Photos help us resolve issues faster.', style: AppTextStyles.bodySmall.copyWith(color: AppColors.secondaryText)),
             const SizedBox(height: 16),
@@ -145,7 +160,14 @@ class _IssueDetailsScreenState extends State<IssueDetailsScreen> {
               ),
             ],
             const SizedBox(height: 24),
-            Text('What exactly is wrong?', style: AppTextStyles.titleMedium),
+            Text(
+              'What exactly is wrong?',
+              style: GoogleFonts.barlowCondensed(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppColors.primaryText,
+              ),
+            ),
              const SizedBox(height: 12),
             Wrap(
               spacing: 8,
@@ -173,7 +195,14 @@ class _IssueDetailsScreenState extends State<IssueDetailsScreen> {
               }).toList(),
             ),
             const SizedBox(height: 24),
-            Text('Add a note (Optional)', style: AppTextStyles.titleMedium),
+            Text(
+              'Add a note (Optional)',
+              style: GoogleFonts.barlowCondensed(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppColors.primaryText,
+              ),
+            ),
             const SizedBox(height: 8),
             TextField(
               controller: _noteController,
@@ -215,7 +244,14 @@ class _IssueDetailsScreenState extends State<IssueDetailsScreen> {
                   minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
-                child: const Text('Next: Resolution', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
+                child: Text(
+                  'Next: Resolution',
+                  style: GoogleFonts.barlowCondensed(
+                    color: const Color(0xFFE65100),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
           ],

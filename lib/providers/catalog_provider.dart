@@ -32,7 +32,7 @@ class CatalogProvider with ChangeNotifier {
   static String get baseUrl {
     try {
       if (Platform.isAndroid) {
-        return 'http://10.0.2.2:3003/api';
+        return 'http://192.168.0.103:3003/api';
       }
     } catch (_) {}
     return 'http://localhost:3003/api';

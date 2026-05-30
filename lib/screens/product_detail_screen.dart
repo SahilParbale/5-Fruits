@@ -181,7 +181,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 const SizedBox(width: 4),
                                 Text(
                                   'ORGANIC BOUTIQUE',
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.barlowCondensed(
                                     color: const Color(0xFFE65100),
                                     fontWeight: FontWeight.w600,
                                     fontSize: 10,
@@ -205,7 +205,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 const SizedBox(width: 4),
                                 Text(
                                   '4.9 (124 Ratings)',
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.barlowCondensed(
                                     color: const Color(0xFF8B6B00),
                                     fontWeight: FontWeight.w600,
                                     fontSize: 10,
@@ -247,7 +247,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           // Price
                           Text(
                             '₹${price.toStringAsFixed(2)}',
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.barlowCondensed(
                               color: AppColors.primaryText,
                               fontSize: 28,
                               fontWeight: FontWeight.w700,
@@ -355,7 +355,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 const SizedBox(width: 16),
                                 Text(
                                   '$_quantity',
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.barlowCondensed(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.primaryText,
@@ -438,7 +438,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 const SizedBox(width: 8),
                                 Text(
                                   'Added $_quantity $name to cart!',
-                                  style: GoogleFonts.poppins(color: const Color(0xFFE65100), fontWeight: FontWeight.w600),
+                                  style: GoogleFonts.barlowCondensed(color: const Color(0xFFE65100), fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -467,7 +467,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         child: Center(
                           child: Text(
                             'Add To Cart  •  ₹${(price * _quantity).toStringAsFixed(2)}',
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.barlowCondensed(
                               color: const Color(0xFFE65100),
                               fontWeight: FontWeight.w600,
                               fontSize: 16,

@@ -70,7 +70,14 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text(isEdit ? 'Edit Address' : 'Add New Address', style: AppTextStyles.titleLarge),
+        title: Text(
+          isEdit ? 'Edit Address' : 'Add New Address', 
+          style: AppTextStyles.titleMedium.copyWith(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: AppColors.primaryText,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -175,8 +182,9 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
   Widget _buildSectionTitle(String title) {
     return Text(
       title,
-      style: AppTextStyles.bodyMedium.copyWith(
-        fontWeight: FontWeight.bold,
+      style: GoogleFonts.barlowCondensed(
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
         color: const Color(0xFF3B3B3B),
       ),
     );
@@ -342,7 +350,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                 _isDefault = value;
               });
             },
-            activeColor: const Color(0xFF1B1B1B),
+            activeColor: const Color(0xFFE65100), // Theme Orange
           ),
         ],
       ),
@@ -394,11 +402,10 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
         child: Center(
           child: Text(
             isEdit ? 'Update Address' : 'Save Address',
-            style: GoogleFonts.barlowCondensed(
+            style: AppTextStyles.titleMedium.copyWith(
               color: const Color(0xFFE65100),
               fontWeight: FontWeight.bold,
-              fontSize: 24,
-              letterSpacing: 1,
+              fontSize: 18,
             ),
           ),
         ),

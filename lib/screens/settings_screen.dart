@@ -14,7 +14,14 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Settings', style: AppTextStyles.titleLarge),
+        title: Text(
+          'Settings',
+          style: GoogleFonts.barlowCondensed(
+            color: AppColors.primaryText,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -41,7 +48,9 @@ class SettingsScreen extends StatelessWidget {
                             trailing: Switch(
                               value: settings.pushNotifications,
                               onChanged: (val) => settings.togglePushNotifications(val),
-                              activeColor: const Color(0xFF1B1B1B),
+                              activeColor: AppColors.secondaryAccent,
+                              inactiveTrackColor: AppColors.stroke,
+                              inactiveThumbColor: AppColors.inactiveTab,
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -53,7 +62,9 @@ class SettingsScreen extends StatelessWidget {
                             trailing: Switch(
                               value: settings.emailNotifications,
                               onChanged: (val) => settings.toggleEmailNotifications(val),
-                              activeColor: const Color(0xFF1B1B1B),
+                              activeColor: AppColors.secondaryAccent,
+                              inactiveTrackColor: AppColors.stroke,
+                              inactiveThumbColor: AppColors.inactiveTab,
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -65,7 +76,9 @@ class SettingsScreen extends StatelessWidget {
                             trailing: Switch(
                               value: settings.smsNotifications,
                               onChanged: (val) => settings.toggleSMSNotifications(val),
-                              activeColor: const Color(0xFF1B1B1B),
+                              activeColor: AppColors.secondaryAccent,
+                              inactiveTrackColor: AppColors.stroke,
+                              inactiveThumbColor: AppColors.inactiveTab,
                             ),
                           ),
                         ],
@@ -82,7 +95,9 @@ class SettingsScreen extends StatelessWidget {
                             trailing: Switch(
                               value: settings.soundEffects,
                               onChanged: (val) => settings.toggleSoundEffects(val),
-                              activeColor: const Color(0xFF1B1B1B),
+                              activeColor: AppColors.secondaryAccent,
+                              inactiveTrackColor: AppColors.stroke,
+                              inactiveThumbColor: AppColors.inactiveTab,
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -107,7 +122,9 @@ class SettingsScreen extends StatelessWidget {
                             trailing: Switch(
                               value: settings.biometricAuth,
                               onChanged: (val) => settings.toggleBiometricAuth(val),
-                              activeColor: const Color(0xFF1B1B1B),
+                              activeColor: AppColors.secondaryAccent,
+                              inactiveTrackColor: AppColors.stroke,
+                              inactiveThumbColor: AppColors.inactiveTab,
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -147,8 +164,8 @@ class SettingsScreen extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 16),
       child: Text(
         title,
-        style: AppTextStyles.titleMedium.copyWith(
-          fontSize: 18,
+        style: GoogleFonts.barlowCondensed(
+          fontSize: 20,
           fontWeight: FontWeight.bold,
           color: AppColors.primaryText,
         ),
@@ -161,14 +178,8 @@ class SettingsScreen extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(AppDefaults.smoothRadius), // 18.0
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.withOpacity(0.2)),
       ),
       child: Column(
         children: children,
@@ -204,8 +215,9 @@ class SettingsScreen extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: AppTextStyles.bodyLarge.copyWith(
-                  fontWeight: FontWeight.w700,
+                style: GoogleFonts.barlowCondensed(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                   color: AppColors.primaryText,
                 ),
               ),

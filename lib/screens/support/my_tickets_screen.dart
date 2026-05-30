@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../theme/app_theme.dart';
 import '../../models/ticket_model.dart';
 import 'ticket_tracking_screen.dart';
@@ -12,7 +13,14 @@ class MyTicketsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('My Support Tickets', style: AppTextStyles.titleLarge),
+        title: Text(
+          'My Support Tickets',
+          style: GoogleFonts.barlowCondensed(
+            color: AppColors.primaryText,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -35,13 +43,7 @@ class MyTicketsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
-              boxShadow: [
-                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 10,
-                  offset: const Offset(0, -4),
-                ),
-              ],
+              border: Border(top: BorderSide(color: Colors.grey.withOpacity(0.2))),
             ),
             child: Container(
               decoration: BoxDecoration(
@@ -57,7 +59,14 @@ class MyTicketsScreen extends StatelessWidget {
                   );
                 },
                 icon: const Icon(Icons.add, color: const Color(0xFFE65100)),
-                label: const Text('Raise New Ticket', style: TextStyle(color: const Color(0xFFE65100), fontSize: 16)),
+                label: Text(
+                  'Raise New Ticket',
+                  style: GoogleFonts.barlowCondensed(
+                    color: const Color(0xFFE65100),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
                   disabledBackgroundColor: Colors.transparent,
@@ -85,14 +94,8 @@ class MyTicketsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.grey.withOpacity(0.2)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,7 +103,14 @@ class MyTicketsScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(ticket.id, style: AppTextStyles.bodyLarge.copyWith(fontWeight: FontWeight.bold)),
+                Text(
+                  ticket.id,
+                  style: GoogleFonts.barlowCondensed(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primaryText,
+                  ),
+                ),
                 _buildStatusBadge(ticket.status),
               ],
             ),
@@ -116,7 +126,11 @@ class MyTicketsScreen extends StatelessWidget {
                 const SizedBox(width: 8),
                 Text(
                   _getIssueTitle(ticket.issueType),
-                  style: AppTextStyles.bodyMedium,
+                  style: GoogleFonts.barlowCondensed(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primaryText,
+                  ),
                 ),
               ],
             ),
@@ -181,7 +195,11 @@ class MyTicketsScreen extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: AppTextStyles.bodySmall.copyWith(color: color, fontWeight: FontWeight.bold),
+        style: GoogleFonts.barlowCondensed(
+          color: color,
+          fontWeight: FontWeight.bold,
+          fontSize: 14,
+        ),
       ),
     );
   }

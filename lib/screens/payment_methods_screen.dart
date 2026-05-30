@@ -107,7 +107,11 @@ class PaymentMethodsScreen extends StatelessWidget {
           const SizedBox(width: 80),
           Text(
             'Payment Methods',
-            style: AppTextStyles.titleLarge.copyWith(fontWeight: FontWeight.bold),
+            style: GoogleFonts.barlowCondensed(
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+              color: AppColors.primaryText,
+            ),
           ),
           const SizedBox(width: 80),
         ],
@@ -123,7 +127,11 @@ class PaymentMethodsScreen extends StatelessWidget {
           padding: const EdgeInsets.only(left: 12, bottom: 12),
           child: Text(
             title,
-            style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
+            style: GoogleFonts.barlowCondensed(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: AppColors.primaryText,
+            ),
           ),
         ),
         Container(
